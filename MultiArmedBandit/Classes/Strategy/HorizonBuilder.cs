@@ -4,8 +4,6 @@ using System.Linq;
 
 namespace MultiArmedBandit
 {
-    enum BatchSizeChangeRule { Const, IncreaseByPercentage, IncreaseByFixedNumberData }
-
     static class HorizonBuilder
     {
         public static int GetHorizon(BatchSizeChangeRule rule, int numberBatches, int startBatchSize, double growthRateBatchSize, int timeChangeBatch) =>

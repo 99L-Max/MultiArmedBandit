@@ -119,60 +119,69 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="AboutProgram" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\txt\AboutProgram.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="AboutProgramm" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\png\AboutProgramm.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Files\AboutProgram.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="AboutStrategy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\txt\AboutStrategy.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\Resources\Files\AboutStrategy.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="Calculate" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\png\Calculate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Button_AboutProgram" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Textures\Button_AboutProgram.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Close" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\png\Close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Button_AboutStrategy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Textures\Button_AboutStrategy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CollectionTitles" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\json\CollectionTitles.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Button_Calculate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Textures\Button_Calculate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CollectionTypes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\json\CollectionTypes.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Button_Close" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Textures\Button_Close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Exit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\png\Exit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Button_Exit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Textures\Button_Exit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Graph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\png\Graph.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Button_Graph" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Textures\Button_Graph.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Button_Main" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Textures\Button_Main.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Button_Minimize" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Textures\Button_Minimize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Button_Resize" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Textures\Button_Resize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Button_Resize_Max" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Textures\Button_Resize_Max.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Button_Resize_Min" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Textures\Button_Resize_Min.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Button_Settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Textures\Button_Settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Dictionary_Collection_DecimalPlaces" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dictionaries\Dictionary_Collection_DecimalPlaces.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Dictionary_Collection_Default" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dictionaries\Dictionary_Collection_Default.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Dictionary_Collection_Minimum" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dictionaries\Dictionary_Collection_Minimum.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Dictionary_Collection_ReadOnly" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dictionaries\Dictionary_Collection_ReadOnly.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Dictionary_Collection_Titles" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dictionaries\Dictionary_Collection_Titles.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ico\Icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Icons\Icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\png\Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Textures\Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Main" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\png\Main.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Minimize" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\png\Minimize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Resize" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\png\Resize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Resize_Max" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\png\Resize_Max.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Resize_Min" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\png\Resize_Min.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\png\Settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SoundDone" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gz\SoundDone.gz;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Strategy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\png\Strategy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Sound_Done" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sounds\Sound_Done.gz;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

@@ -15,19 +15,10 @@ namespace MultiArmedBandit
             return (pair.Key, pair.Value);
         }
 
-        public static IEnumerable<double> CreateDoubleCollection(double start, double step, int count, int decimalPlaces = 2)
+        public static IEnumerable<double> CreateCollection(double start, double step, int count, int decimalPlaces = 2)
         {
             for (int i = 0; i < count; i++)
                 yield return Math.Round(start + i * step, decimalPlaces);
-        }
-
-        public static IEnumerable<int> CreateIntCollection(int start, int step, int count)
-        {
-            while (count-- > 0)
-            {
-                yield return start;
-                start += step;
-            }
         }
 
         public static IEnumerable<Bandit> CreateBandits(GameData gameData)

@@ -7,8 +7,6 @@ using System.Windows.Forms;
 
 namespace MultiArmedBandit
 {
-    enum Strategy { UCB, ThompsonSampling }
-
     class Player
     {
         private readonly Stopwatch _stopWatch = new Stopwatch();

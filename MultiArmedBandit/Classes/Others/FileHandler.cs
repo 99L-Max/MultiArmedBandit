@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Text;
@@ -90,10 +90,10 @@ namespace MultiArmedBandit
             }
         }
 
-        public static Dictionary<TKey, TValue> ReadJsonResource<TKey, TValue>(byte[] array)
+        public static ReadOnlyDictionary<TKey, TValue> ReadJsonResource<TKey, TValue>(byte[] array)
         {
             var jString = Encoding.UTF8.GetString(array);
-            return JsonConvert.DeserializeObject<Dictionary<TKey, TValue>>(jString);
+            return JsonConvert.DeserializeObject<ReadOnlyDictionary<TKey, TValue>>(jString);
         }
     }
 }

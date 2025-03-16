@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\ico\Icon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Icons\Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MathNet.Numerics, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -73,16 +73,34 @@
   <ItemGroup>
     <Compile Include="Classes\Others\CollectionHandler.cs" />
     <Compile Include="Classes\Others\FileHandler.cs" />
-    <Compile Include="Classes\Strategy\GameData.cs" />
     <Compile Include="Classes\Others\ModifyProgressBarColor.cs" />
+    <Compile Include="Classes\Others\Notificator.cs" />
     <Compile Include="Classes\Others\Sound.cs" />
     <Compile Include="Classes\Strategy\Arm.cs" />
     <Compile Include="Classes\Strategy\Bandit.cs" />
     <Compile Include="Classes\Strategy\BanditThompsonSampling.cs" />
     <Compile Include="Classes\Strategy\BanditUCB.cs" />
+    <Compile Include="Classes\Strategy\GameData.cs" />
     <Compile Include="Classes\Strategy\HorizonBuilder.cs" />
     <Compile Include="Classes\Strategy\OneStepIncome.cs" />
     <Compile Include="Classes\Strategy\Player.cs" />
+    <Compile Include="Controls\Notification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Notification.Designer.cs">
+      <DependentUpon>Notification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\BatchSizeChangeRule.cs" />
+    <Compile Include="Enums\CollectionNames.cs" />
+    <Compile Include="Enums\NotificationAction.cs" />
+    <Compile Include="Enums\Strategy.cs" />
+    <Compile Include="Enums\TypeForm.cs" />
+    <Compile Include="Forms\FormArraySettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormArraySettings.Designer.cs">
+      <DependentUpon>FormArraySettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormChart.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,14 +143,14 @@
     <Compile Include="Forms\FormModeling.Designer.cs">
       <DependentUpon>FormModeling.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormArraySettings.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormArraySettings.Designer.cs">
-      <DependentUpon>FormArraySettings.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\Notification.resx">
+      <DependentUpon>Notification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormArraySettings.resx">
+      <DependentUpon>FormArraySettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormChart.resx">
       <DependentUpon>FormChart.cs</DependentUpon>
     </EmbeddedResource>
@@ -154,9 +172,6 @@
     <EmbeddedResource Include="Forms\FormModeling.resx">
       <DependentUpon>FormModeling.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormArraySettings.resx">
-      <DependentUpon>FormArraySettings.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -177,9 +192,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\gz\SoundDone.gz" />
-    <None Include="Resources\json\CollectionTitles.json" />
-    <None Include="Resources\json\CollectionTypes.json" />
+    <None Include="Resources\Dictionaries\Dictionary_Collection_DecimalPlaces.json" />
+    <None Include="Resources\Dictionaries\Dictionary_Collection_Default.json" />
+    <None Include="Resources\Dictionaries\Dictionary_Collection_Minimum.json" />
+    <None Include="Resources\Dictionaries\Dictionary_Collection_ReadOnly.json" />
+    <None Include="Resources\Dictionaries\Dictionary_Collection_Titles.json" />
+    <None Include="Resources\Sounds\Sound_Done.gz" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -197,22 +215,22 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\ico\Icon.ico" />
-    <Content Include="Resources\png\AboutProgramm.png" />
-    <Content Include="Resources\png\Calculate.png" />
-    <Content Include="Resources\png\Close.png" />
-    <Content Include="Resources\png\Exit.png" />
-    <Content Include="Resources\png\Graph.png" />
-    <Content Include="Resources\png\Logo.png" />
-    <Content Include="Resources\png\Main.png" />
-    <Content Include="Resources\png\Minimize.png" />
-    <Content Include="Resources\png\Resize.png" />
-    <Content Include="Resources\png\Resize_Max.png" />
-    <Content Include="Resources\png\Resize_Min.png" />
-    <Content Include="Resources\png\Settings.png" />
-    <Content Include="Resources\png\Strategy.png" />
-    <Content Include="Resources\txt\AboutProgram.txt" />
-    <Content Include="Resources\txt\AboutStrategy.txt" />
+    <Content Include="Resources\Files\AboutProgram.txt" />
+    <Content Include="Resources\Files\AboutStrategy.txt" />
+    <Content Include="Resources\Icons\Icon.ico" />
+    <Content Include="Resources\Textures\Button_AboutProgram.png" />
+    <Content Include="Resources\Textures\Button_AboutStrategy.png" />
+    <Content Include="Resources\Textures\Button_Calculate.png" />
+    <Content Include="Resources\Textures\Button_Close.png" />
+    <Content Include="Resources\Textures\Button_Exit.png" />
+    <Content Include="Resources\Textures\Button_Graph.png" />
+    <Content Include="Resources\Textures\Button_Main.png" />
+    <Content Include="Resources\Textures\Button_Minimize.png" />
+    <Content Include="Resources\Textures\Button_Resize.png" />
+    <Content Include="Resources\Textures\Button_Resize_Max.png" />
+    <Content Include="Resources\Textures\Button_Resize_Min.png" />
+    <Content Include="Resources\Textures\Button_Settings.png" />
+    <Content Include="Resources\Textures\Logo.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

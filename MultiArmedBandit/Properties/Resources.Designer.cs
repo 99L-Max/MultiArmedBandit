@@ -70,16 +70,6 @@ namespace MultiArmedBandit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap AboutProgramm {
-            get {
-                object obj = ResourceManager.GetObject("AboutProgramm", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to В РАЗРАБОТКЕ.
         /// </summary>
         internal static string AboutStrategy {
@@ -91,9 +81,9 @@ namespace MultiArmedBandit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Calculate {
+        internal static System.Drawing.Bitmap Button_AboutProgram {
             get {
-                object obj = ResourceManager.GetObject("Calculate", resourceCulture);
+                object obj = ResourceManager.GetObject("Button_AboutProgram", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -101,9 +91,109 @@ namespace MultiArmedBandit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Close {
+        internal static System.Drawing.Bitmap Button_AboutStrategy {
             get {
-                object obj = ResourceManager.GetObject("Close", resourceCulture);
+                object obj = ResourceManager.GetObject("Button_AboutStrategy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Button_Calculate {
+            get {
+                object obj = ResourceManager.GetObject("Button_Calculate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Button_Close {
+            get {
+                object obj = ResourceManager.GetObject("Button_Close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Button_Exit {
+            get {
+                object obj = ResourceManager.GetObject("Button_Exit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Button_Graph {
+            get {
+                object obj = ResourceManager.GetObject("Button_Graph", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Button_Main {
+            get {
+                object obj = ResourceManager.GetObject("Button_Main", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Button_Minimize {
+            get {
+                object obj = ResourceManager.GetObject("Button_Minimize", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Button_Resize {
+            get {
+                object obj = ResourceManager.GetObject("Button_Resize", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Button_Resize_Max {
+            get {
+                object obj = ResourceManager.GetObject("Button_Resize_Max", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Button_Resize_Min {
+            get {
+                object obj = ResourceManager.GetObject("Button_Resize_Min", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Button_Settings {
+            get {
+                object obj = ResourceManager.GetObject("Button_Settings", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -111,9 +201,9 @@ namespace MultiArmedBandit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] CollectionTitles {
+        internal static byte[] Dictionary_Collection_DecimalPlaces {
             get {
-                object obj = ResourceManager.GetObject("CollectionTitles", resourceCulture);
+                object obj = ResourceManager.GetObject("Dictionary_Collection_DecimalPlaces", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -121,30 +211,40 @@ namespace MultiArmedBandit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] CollectionTypes {
+        internal static byte[] Dictionary_Collection_Default {
             get {
-                object obj = ResourceManager.GetObject("CollectionTypes", resourceCulture);
+                object obj = ResourceManager.GetObject("Dictionary_Collection_Default", resourceCulture);
                 return ((byte[])(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static System.Drawing.Bitmap Exit {
+        internal static byte[] Dictionary_Collection_Minimum {
             get {
-                object obj = ResourceManager.GetObject("Exit", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                object obj = ResourceManager.GetObject("Dictionary_Collection_Minimum", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static System.Drawing.Bitmap Graph {
+        internal static byte[] Dictionary_Collection_ReadOnly {
             get {
-                object obj = ResourceManager.GetObject("Graph", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                object obj = ResourceManager.GetObject("Dictionary_Collection_ReadOnly", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Dictionary_Collection_Titles {
+            get {
+                object obj = ResourceManager.GetObject("Dictionary_Collection_Titles", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -169,82 +269,12 @@ namespace MultiArmedBandit.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Main {
-            get {
-                object obj = ResourceManager.GetObject("Main", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Minimize {
-            get {
-                object obj = ResourceManager.GetObject("Minimize", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Resize {
-            get {
-                object obj = ResourceManager.GetObject("Resize", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Resize_Max {
-            get {
-                object obj = ResourceManager.GetObject("Resize_Max", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Resize_Min {
-            get {
-                object obj = ResourceManager.GetObject("Resize_Min", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Settings {
-            get {
-                object obj = ResourceManager.GetObject("Settings", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] SoundDone {
+        internal static byte[] Sound_Done {
             get {
-                object obj = ResourceManager.GetObject("SoundDone", resourceCulture);
+                object obj = ResourceManager.GetObject("Sound_Done", resourceCulture);
                 return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Strategy {
-            get {
-                object obj = ResourceManager.GetObject("Strategy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

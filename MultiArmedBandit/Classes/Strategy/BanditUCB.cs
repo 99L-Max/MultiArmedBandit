@@ -9,7 +9,7 @@ namespace MultiArmedBandit
             base(centralExpectation, maxVariance, countArms, batches)
         { }
 
-        public double ParameterUCB { get; set; } = GameData.DefaultParameterUCB;
+        public double ParameterUCB { get; set; } = 0d;
 
         public override string GameResult =>
             $"a = {ParameterUCB:f2}\n{base.GameResult}";

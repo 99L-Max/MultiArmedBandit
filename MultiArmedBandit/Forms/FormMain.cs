@@ -5,8 +5,6 @@ using System.Windows.Forms;
 
 namespace MultiArmedBandit
 {
-    enum TypeForm { DateTime, Modeling, Chart, AboutStrategy, AboutProgram }
-
     partial class FormMain : Form
     {
         private readonly FormModeling _formModeling;
@@ -83,12 +81,12 @@ namespace MultiArmedBandit
             if (WindowState == FormWindowState.Normal)
             {
                 WindowState = FormWindowState.Maximized;
-                _btnResize.BackgroundImage = Resources.Resize_Min;
+                _btnResize.BackgroundImage = Resources.Button_Resize_Min;
             }
             else
             {
                 WindowState = FormWindowState.Normal;
-                _btnResize.BackgroundImage = Resources.Resize_Max;
+                _btnResize.BackgroundImage = Resources.Button_Resize_Max;
             }
 
             _pnlResize.Visible = !_pnlResize.Visible;

@@ -1,15 +1,21 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using MultiArmedBandit.Properties;
 
 namespace MultiArmedBandit
 {
     class GameData
     {
-        public const int DefaultCountArms = Bandit.MinCountArms;
-        public const int DefaultNumberBatches = 50;
-        public const int DefaultStartBatchSize = 100;
-        public const int DefaultTimeChangeBatch = 10;
-        public const double DefaultGrowthRateBatchSize = 1d;
-        public const double DefaultParameterUCB = 1d;
+        public static readonly ReadOnlyDictionary<CollectionNames, double> CollectionDefault;
+        public static readonly ReadOnlyDictionary<CollectionNames, double> CollectionMinimum;
+        public static readonly ReadOnlyDictionary<CollectionNames, int> CollectionDecimalPlaces;
+
+        static GameData()
+        {
+            CollectionDefault = FileHandler.ReadJsonResource<CollectionNames, double>(Resources.Dictionary_Collection_Default);
+            CollectionMinimum = FileHandler.ReadJsonResource<CollectionNames, double>(Resources.Dictionary_Collection_Minimum);
+            CollectionDecimalPlaces = FileHandler.ReadJsonResource<CollectionNames, int>(Resources.Dictionary_Collection_DecimalPlaces);
+        }
 
         public BatchSizeChangeRule BatchSizeChangeRule { get; set; }
         public Strategy Strategy { get; set; }

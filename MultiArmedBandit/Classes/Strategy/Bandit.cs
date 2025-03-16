@@ -7,8 +7,6 @@ namespace MultiArmedBandit
 {
     abstract class Bandit
     {
-        public const int MinCountArms = 2;
-
         private readonly double _sqrtDivDN;
         private readonly double _sqrtMulDN;
 
@@ -26,9 +24,6 @@ namespace MultiArmedBandit
 
         public Bandit(double centralExpectation, double maxVariance, int countArms, IEnumerable<int> batches)
         {
-            if (countArms < MinCountArms)
-                throw new ArgumentException($"Минимальное число рук бандита J = {MinCountArms}.");
-
             _arms = new Arm[countArms];
             _batches = batches.ToArray();
 

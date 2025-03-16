@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -8,10 +9,10 @@ using MultiArmedBandit.Properties;
 
 namespace MultiArmedBandit
 {
-    enum CollectionNames { NumberRow, CountArms, NumberBatches, StartBatchSize, GrowthRateBatchSize, TimeChangeBatch, Horizon, ParameterUCB, Deviation }
-
     partial class FormModeling : Form
     {
+        private readonly ReadOnlyDictionary<string, bool> _collectionReadOnly;
+
         private IEnumerable<double> _deviations;
         private Player _player;
 
@@ -21,12 +22,15 @@ namespace MultiArmedBandit
         public FormModeling(Color backColor)
         {
             InitializeComponent();
+
+            _dataGridView.BackgroundColor = backColor;
+            _collectionReadOnly = FileHandler.ReadJsonResource<string, bool>(Resources.Dictionary_Collection_ReadOnly);
+            _deviations = CollectionHandler.CreateCollection(0d, 0.3, 51, 1);
+            _txtDeviations.Text = CollectionHandler.ConvertToShortString(_deviations);
+
             CreateTable();
             OnBanditsCountChanged(_numBanditsCount, EventArgs.Empty);
 
-            _dataGridView.BackgroundColor = backColor;
-            _deviations = CollectionHandler.CreateDoubleCollection(0d, 0.3, 51, 1);
-            _txtDeviations.Text = CollectionHandler.ConvertToShortString(_deviations);
             _cmbBatchSizeChangeRule.Items.AddRange(Enum.GetNames(typeof(BatchSizeChangeRule)));
             _cmbStrategy.Items.AddRange(Enum.GetNames(typeof(Strategy)));
 
@@ -45,10 +49,10 @@ namespace MultiArmedBandit
             set
             {
                 _grpSimulationSettings.Enabled = value;
-                _dataGridView.CurrentCell.Selected = value;
-                _dataGridView.DefaultCellStyle.SelectionBackColor = value ? SystemColors.Highlight : Color.Transparent;
-                _dataGridView.Enabled = value;
                 _dataGridView.ClearSelection();
+
+                foreach (DataGridViewColumn col in _dataGridView.Columns)
+                    col.ReadOnly = !value || _collectionReadOnly[col.Name];
             }
         }
 
@@ -68,8 +72,7 @@ namespace MultiArmedBandit
         private void CreateTable()
         {
             var columnsNames = Enum.GetValues(typeof(CollectionNames)).Cast<CollectionNames>().Where(x => x != CollectionNames.Deviation).ToArray();
-            var columnsHeaderText = FileHandler.ReadJsonResource<CollectionNames, string>(Resources.CollectionTitles);
-            var dataTypes = FileHandler.ReadJsonResource<CollectionNames, Type>(Resources.CollectionTypes);
+            var columnsHeaderText = FileHandler.ReadJsonResource<CollectionNames, string>(Resources.Dictionary_Collection_Titles);
             var fontTable = new Font("", 14);
             var i = 0;
 
@@ -80,21 +83,21 @@ namespace MultiArmedBandit
             {
                 _dataGridView.Columns[i].Name = column.ToString();
                 _dataGridView.Columns[i].HeaderText = columnsHeaderText[column];
-                _dataGridView.Columns[i].ValueType = dataTypes[column];
+                _dataGridView.Columns[i].ValueType = typeof(double);
+                _dataGridView.Columns[i].ReadOnly = _collectionReadOnly[column.ToString()];
                 _dataGridView.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
                 _dataGridView.Columns[i].HeaderCell.Style.Font = fontTable;
                 _dataGridView.Columns[i].DefaultCellStyle.Font = fontTable;
                 _dataGridView.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 _dataGridView.Columns[i].HeaderCell.Style.ForeColor = Color.White;
-                _dataGridView.Columns[i].DefaultCellStyle.Format = dataTypes[column] == typeof(double) ? "f2" : "f0";
+                _dataGridView.Columns[i].DefaultCellStyle.Format = $"f{GameData.CollectionDecimalPlaces[column]}";
 
-                if (column != CollectionNames.NumberRow) _dataGridView.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                if (column != CollectionNames.NumberRow)
+                    _dataGridView.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 i++;
             }
 
             _dataGridView.Columns[(int)CollectionNames.NumberRow].Width = 40;
-            _dataGridView.Columns[(int)CollectionNames.NumberRow].ReadOnly = true;
-            _dataGridView.Columns[(int)CollectionNames.Horizon].ReadOnly = true;
         }
 
         private void ShowResult()
@@ -137,60 +140,51 @@ namespace MultiArmedBandit
             }
         }
 
-        private T[] GetColumn<T>(CollectionNames collectionName)
+        private int[] GetColumnInt(CollectionNames collectionName)
         {
-            var arr = new T[_dataGridView.Rows.Count];
             var nameColumn = collectionName.ToString();
+            var column = new int[_dataGridView.RowCount];
 
-            for (int i = 0; i < _dataGridView.Rows.Count; i++)
-                try
-                {
-                    arr[i] = (T)Convert.ChangeType(_dataGridView.Rows[i].Cells[nameColumn].Value, typeof(T));
-                }
-                catch (InvalidCastException)
-                {
-                    arr[i] = default;
-                }
+            for (int i = 0; i < _dataGridView.RowCount; i++)
+                column[i] = Convert.ToInt32(_dataGridView.Rows[i].Cells[nameColumn].Value);
 
-            return arr;
+            return column;
         }
 
-        private void SetColumn<T>(CollectionNames collectionName, IEnumerable<T> values) =>
-            SetColumn<T>(collectionName.ToString(), values);
-
-        private void SetColumn<T>(string nameColumn, IEnumerable<T> values)
+        private double[] GetColumnDouble(CollectionNames collectionName)
         {
-            var i = 0;
+            var nameColumn = collectionName.ToString();
+            var column = new double[_dataGridView.RowCount];
 
-            foreach (var value in values)
-                _dataGridView.Rows[i++].Cells[nameColumn].Value = value;
+            for (int i = 0; i < _dataGridView.RowCount; i++)
+                column[i] = Convert.ToDouble(_dataGridView.Rows[i].Cells[nameColumn].Value);
+
+            return column;
+        }
+
+        private void SetColumn<T>(CollectionNames collectionName, IEnumerable<T> values, int startRowIndex = 0) =>
+            SetColumn<T>(collectionName.ToString(), values, startRowIndex);
+
+        private void SetColumn<T>(string nameColumn, IEnumerable<T> values, int startRowIndex = 0)
+        {
+            var enumerator = values.GetEnumerator();
+            var i = startRowIndex;
+
+            while (enumerator.MoveNext() && i < _dataGridView.RowCount)
+                _dataGridView.Rows[i++].Cells[nameColumn].Value = enumerator.Current;
         }
 
         private void ChangeHorizon(int rowIndex)
         {
             var row = _dataGridView.Rows[rowIndex];
+            var rule = (BatchSizeChangeRule)_cmbBatchSizeChangeRule.SelectedIndex;
+            var numberBatches = Convert.ToInt32(row.Cells[CollectionNames.NumberBatches.ToString()].Value);
+            var startBatchSize = Convert.ToInt32(row.Cells[CollectionNames.StartBatchSize.ToString()].Value);
+            var growthRateBatchSize = Convert.ToDouble(row.Cells[CollectionNames.GrowthRateBatchSize.ToString()].Value);
+            var timeChangeBatch = Convert.ToInt32(row.Cells[CollectionNames.TimeChangeBatch.ToString()].Value);
 
             row.Cells[CollectionNames.Horizon.ToString()].Value =
-                HorizonBuilder.GetHorizon(
-                    (BatchSizeChangeRule)_cmbBatchSizeChangeRule.SelectedIndex,
-                    (int)row.Cells[CollectionNames.NumberBatches.ToString()].Value,
-                    (int)row.Cells[CollectionNames.StartBatchSize.ToString()].Value,
-                    (double)row.Cells[CollectionNames.GrowthRateBatchSize.ToString()].Value,
-                    (int)row.Cells[CollectionNames.TimeChangeBatch.ToString()].Value
-                    );
-        }
-
-        private void AdjustDataGridViewCellValue(DataGridViewCellEventArgs e, double minValue)
-        {
-            if (Convert.ToDouble(_dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) < minValue)
-            {
-                if (_dataGridView.Columns[e.ColumnIndex].DefaultCellStyle.Format.Equals(typeof(double)))
-                    _dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = minValue;
-                else
-                    _dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = (int)minValue;
-
-                MessageBox.Show($"Значение \"{_dataGridView.Columns[e.ColumnIndex].HeaderText}\" не может быть меньше {minValue}", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                HorizonBuilder.GetHorizon(rule, numberBatches, startBatchSize, growthRateBatchSize, timeChangeBatch);
         }
 
         private void OnNewClick(object sender, EventArgs e)
@@ -223,12 +217,12 @@ namespace MultiArmedBandit
                 BatchSizeChangeRule = (BatchSizeChangeRule)_cmbBatchSizeChangeRule.SelectedIndex,
                 Strategy = (Strategy)_cmbStrategy.SelectedIndex,
 
-                CountArms = GetColumn<int>(CollectionNames.CountArms),
-                NumberBatches = GetColumn<int>(CollectionNames.NumberBatches),
-                StartBatchSize = GetColumn<int>(CollectionNames.StartBatchSize),
-                GrowthRateBatchSize = GetColumn<double>(CollectionNames.GrowthRateBatchSize),
-                TimeChangeBatch = GetColumn<int>(CollectionNames.TimeChangeBatch),
-                ParameterUCB = GetColumn<double>(CollectionNames.ParameterUCB),
+                CountArms = GetColumnInt(CollectionNames.CountArms),
+                NumberBatches = GetColumnInt(CollectionNames.NumberBatches),
+                StartBatchSize = GetColumnInt(CollectionNames.StartBatchSize),
+                GrowthRateBatchSize = GetColumnDouble(CollectionNames.GrowthRateBatchSize),
+                TimeChangeBatch = GetColumnInt(CollectionNames.TimeChangeBatch),
+                ParameterUCB = GetColumnDouble(CollectionNames.ParameterUCB),
                 Deviations = _deviations.ToArray(),
 
                 CountGames = (int)_numCountGames.Value,
@@ -302,6 +296,7 @@ namespace MultiArmedBandit
             _txtDeviations.Text = CollectionHandler.ConvertToShortString(_deviations);
 
             _dataGridView.CellValueChanged -= OnDataGridViewCellValueChanged;
+            _cmbBatchSizeChangeRule.SelectedIndexChanged -= OnBatchSizeChangeRuleChanged;
 
             _numBanditsCount.Value = gameData.CountBandits;
             _numCountGames.Value = gameData.CountGames;
@@ -310,6 +305,9 @@ namespace MultiArmedBandit
             _numCentralExpectation.Value = (decimal)gameData.CentralExpectation;
             _numMaxVariance.Value = (decimal)gameData.MaxVariance;
 
+            _cmbStrategy.SelectedIndex = (int)gameData.Strategy;
+            _cmbBatchSizeChangeRule.SelectedIndex = (int)gameData.BatchSizeChangeRule;
+
             SetColumn(CollectionNames.CountArms, gameData.CountArms);
             SetColumn(CollectionNames.NumberBatches, gameData.NumberBatches);
             SetColumn(CollectionNames.StartBatchSize, gameData.StartBatchSize);
@@ -317,10 +315,10 @@ namespace MultiArmedBandit
             SetColumn(CollectionNames.TimeChangeBatch, gameData.TimeChangeBatch);
             SetColumn(CollectionNames.ParameterUCB, gameData.ParameterUCB);
 
-            _cmbStrategy.SelectedIndex = (int)gameData.Strategy;
-            _cmbBatchSizeChangeRule.SelectedIndex = (int)gameData.BatchSizeChangeRule;
+            OnBatchSizeChangeRuleChanged(_cmbBatchSizeChangeRule, EventArgs.Empty);
 
             _dataGridView.CellValueChanged += OnDataGridViewCellValueChanged;
+            _cmbBatchSizeChangeRule.SelectedIndexChanged += OnBatchSizeChangeRuleChanged;
 
             ShowResult();
             _btnSave.Enabled = IsDataSaved = true;
@@ -350,10 +348,10 @@ namespace MultiArmedBandit
         {
             var rule = (BatchSizeChangeRule)_cmbBatchSizeChangeRule.SelectedIndex;
             var indexHorizon = (int)CollectionNames.Horizon;
-            var numberBatches = GetColumn<int>(CollectionNames.NumberBatches);
-            var startBatchSize = GetColumn<int>(CollectionNames.StartBatchSize);
-            var timeChangeBatch = GetColumn<int>(CollectionNames.TimeChangeBatch);
-            var growthRateBatchSize = GetColumn<double>(CollectionNames.GrowthRateBatchSize);
+            var numberBatches = GetColumnInt(CollectionNames.NumberBatches);
+            var startBatchSize = GetColumnInt(CollectionNames.StartBatchSize);
+            var timeChangeBatch = GetColumnInt(CollectionNames.TimeChangeBatch);
+            var growthRateBatchSize = GetColumnDouble(CollectionNames.GrowthRateBatchSize);
 
             for (int i = 0; i < _dataGridView.RowCount; i++)
                 _dataGridView.Rows[i].Cells[indexHorizon].Value = HorizonBuilder.GetHorizon(rule, numberBatches[i], startBatchSize[i], growthRateBatchSize[i], timeChangeBatch[i]);
@@ -371,17 +369,16 @@ namespace MultiArmedBandit
                 {
                     _dataGridView.Rows.Add(
                         numberRow,
-                        GameData.DefaultCountArms,
-                        GameData.DefaultNumberBatches,
-                        GameData.DefaultStartBatchSize,
-                        GameData.DefaultGrowthRateBatchSize,
-                        GameData.DefaultTimeChangeBatch,
-                        0,
-                        GameData.DefaultParameterUCB
+                        GameData.CollectionDefault[CollectionNames.CountArms],
+                        GameData.CollectionDefault[CollectionNames.NumberBatches],
+                        GameData.CollectionDefault[CollectionNames.StartBatchSize],
+                        GameData.CollectionDefault[CollectionNames.GrowthRateBatchSize],
+                        GameData.CollectionDefault[CollectionNames.TimeChangeBatch],
+                        GameData.CollectionDefault[CollectionNames.Horizon],
+                        GameData.CollectionDefault[CollectionNames.ParameterUCB]
                         );
 
-                    ChangeHorizon(numberRow - 1);
-                    numberRow++;
+                    ChangeHorizon(numberRow++ - 1);
                 }
             }
             else
@@ -391,7 +388,7 @@ namespace MultiArmedBandit
         private void OnChkPlaySoundCheckedChanged(object sender, EventArgs e)
         {
             if (_chkSoundPlay.Checked)
-                Sound.Play(Properties.Resources.SoundDone);
+                Sound.Play(Properties.Resources.Sound_Done);
         }
 
         private void OnButtonEnabledChanged(object sender, EventArgs e)
@@ -406,13 +403,11 @@ namespace MultiArmedBandit
             {
                 if (form.CollectionName == CollectionNames.Deviation.ToString())
                 {
-                    _deviations = form.GetDoubleCollection();
+                    _deviations = form.GetCollection();
                     _txtDeviations.Text = CollectionHandler.ConvertToShortString(_deviations);
                 }
-                else if (_dataGridView.Columns[form.CollectionName].ValueType == typeof(double))
-                    SetColumn(form.CollectionName, form.GetDoubleCollection());
                 else
-                    SetColumn(form.CollectionName, form.GetIntCollection());
+                    SetColumn(form.CollectionName, form.GetCollection());
 
                 form.FormClosing -= OnFormCollectionSettingsClosing;
             }
@@ -427,39 +422,40 @@ namespace MultiArmedBandit
             }
         }
 
+        private void OnDataGridViewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                var selectedColumnIndex = _dataGridView.SelectedCells[0].ColumnIndex;
+                var clipboardText = Clipboard.GetText();
+
+                if (_dataGridView.Columns[selectedColumnIndex].ReadOnly) return;
+                if (string.IsNullOrEmpty(clipboardText)) return;
+
+                var columnName = _dataGridView.Columns[selectedColumnIndex].Name;
+                var rowIndex = _dataGridView.CurrentCell.RowIndex;
+                var rows = clipboardText.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                var column = rows.Select(x => x.Split('\t')[0]);
+                var values = column.Select(s => { return double.TryParse(s, out double value) ? (double?)value : null; }).Where(d => d.HasValue).Select(d => d.Value);
+
+                SetColumn(columnName, values, rowIndex);
+            }
+        }
+
         private void OnDataGridViewColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (_dataGridView.Columns[e.ColumnIndex].ReadOnly) return;
+
             var nameColumn = (CollectionNames)e.ColumnIndex;
-
-            if (nameColumn == CollectionNames.NumberRow || nameColumn == CollectionNames.Horizon)
-                return;
-
             var title = _dataGridView.Columns[e.ColumnIndex].HeaderText;
-            var decimalPlaces = _dataGridView.Columns[e.ColumnIndex].ValueType == typeof(double) ? 2 : 0;
-            var count = _dataGridView.RowCount;
-            var (start, step, minStart, maxStart) = (0d, 0d, 0d, 0d);
+            var decimalPlaces = GameData.CollectionDecimalPlaces[nameColumn];
 
-            switch (nameColumn)
-            {
-                case CollectionNames.CountArms:
-                    (start, step, minStart, maxStart) = (GameData.DefaultCountArms, 0, Bandit.MinCountArms, 10);
-                    break;
-                case CollectionNames.NumberBatches:
-                    (start, step, minStart, maxStart) = (GameData.DefaultNumberBatches, 0, 1, int.MaxValue);
-                    break;
-                case CollectionNames.StartBatchSize:
-                    (start, step, minStart, maxStart) = (GameData.DefaultStartBatchSize, 0, 2, int.MaxValue);
-                    break;
-                case CollectionNames.GrowthRateBatchSize:
-                    (start, step, minStart, maxStart) = (GameData.DefaultGrowthRateBatchSize, 0.2d, 1d, int.MaxValue);
-                    break;
-                case CollectionNames.TimeChangeBatch:
-                    (start, step, minStart, maxStart) = (GameData.DefaultTimeChangeBatch, 5, 1, int.MaxValue);
-                    break;
-                case CollectionNames.ParameterUCB:
-                    (start, step, minStart, maxStart) = (GameData.DefaultParameterUCB, 0.01d, 0d, int.MaxValue);
-                    break;
-            }
+            var start = GameData.CollectionDefault[nameColumn];
+            var step = 0d;
+            var count = _dataGridView.RowCount;
+
+            var minStart = GameData.CollectionMinimum[nameColumn];
+            var maxStart = int.MaxValue;
 
             var form = new FormCollectionSettings(nameColumn.ToString(), title, start, step, count, minStart, maxStart, decimalPlaces, true);
 
@@ -467,60 +463,37 @@ namespace MultiArmedBandit
             form.ShowDialog();
         }
 
-        private void OnDataGridViewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Control && e.KeyCode == Keys.V)
-            {
-                var lines = Clipboard.GetText(TextDataFormat.Text).Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
-                var rowIndex = _dataGridView.CurrentCell.RowIndex;
-                var colIndex = _dataGridView.Columns.IndexOf(_dataGridView.CurrentCell.OwningColumn);
-
-                if (_dataGridView.Columns[colIndex].Index == (int)CollectionNames.NumberRow)
-                    return;
-
-                foreach (var line in lines)
-                    if (rowIndex < _dataGridView.RowCount && line.Length > 0)
-                    {
-                        string[] cells = line.Split('\t');
-
-                        for (int i = 0; i < cells.Length; ++i)
-                            if (colIndex + i < _dataGridView.ColumnCount)
-                                if (_dataGridView.Columns[colIndex + i].ValueType == typeof(int))
-                                    _dataGridView[colIndex + i, rowIndex].Value = int.Parse(cells[i]);
-                                else
-                                    _dataGridView[colIndex + i, rowIndex].Value = double.Parse(cells[i]);
-
-                        rowIndex++;
-                    }
-            }
-        }
-
         private void OnDataGridViewCellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex == -1)
-                return;
+            if (e.RowIndex == -1) return;
 
-            switch ((CollectionNames)e.ColumnIndex)
+            var name = (CollectionNames)e.ColumnIndex;
+            var minValue = GameData.CollectionMinimum[name];
+            var input = _dataGridView[e.ColumnIndex, e.RowIndex].Value;
+
+            if (input.ToString() == string.Empty)
             {
-                case CollectionNames.CountArms:
-                    AdjustDataGridViewCellValue(e, Bandit.MinCountArms);
-                    break;
+                _dataGridView[e.ColumnIndex, e.RowIndex].Value = GameData.CollectionDefault[name];
+                Notificator.ShowNotification($"Значение \"{_dataGridView.Columns[e.ColumnIndex].HeaderText}\" не может быть пустым.");
+            }
+            else if (Convert.ToDouble(input) < minValue)
+            {
+                _dataGridView[e.ColumnIndex, e.RowIndex].Value = minValue;
+                Notificator.ShowNotification($"Значение \"{_dataGridView.Columns[e.ColumnIndex].HeaderText}\" не может быть меньше {minValue}.");
+            }
 
+            switch (name)
+            {
                 case CollectionNames.NumberBatches:
                 case CollectionNames.StartBatchSize:
                 case CollectionNames.TimeChangeBatch:
                 case CollectionNames.GrowthRateBatchSize:
-                    AdjustDataGridViewCellValue(e, 1);
                     ChangeHorizon(e.RowIndex);
-                    break;
-
-                case CollectionNames.ParameterUCB:
-                    AdjustDataGridViewCellValue(e, 0);
                     break;
             }
         }
 
         private void OnDataGridViewDataError(object sender, DataGridViewDataErrorEventArgs e) =>
-            MessageBox.Show(e.Exception.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Notificator.ShowNotification(e.Exception.Message);
     }
 }

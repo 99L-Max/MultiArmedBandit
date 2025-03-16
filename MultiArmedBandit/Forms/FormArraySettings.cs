@@ -40,20 +40,12 @@ namespace MultiArmedBandit
             Close();
         }
 
-        public IEnumerable<int> GetIntCollection()
-        {
-            var start = (int)_numStart.Value;
-            var step = (int)_numStep.Value;
-            var count = (int)_numCount.Value;
-            return CollectionHandler.CreateIntCollection(start, step, count);
-        }
-
-        public IEnumerable<double> GetDoubleCollection()
+        public IEnumerable<double> GetCollection()
         {
             var start = (double)_numStart.Value;
             var step = (double)_numStep.Value;
             var count = (int)_numCount.Value;
-            return CollectionHandler.CreateDoubleCollection(start, step, count, _decimalPlaces);
+            return CollectionHandler.CreateCollection(start, step, count, _decimalPlaces);
         }
     }
 }

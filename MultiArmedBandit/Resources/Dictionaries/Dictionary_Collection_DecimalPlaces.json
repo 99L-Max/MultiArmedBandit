@@ -1,0 +1,11 @@
+{
+    "NumberRow": 0,
+    "CountArms": 0,
+    "NumberBatches": 0,
+    "StartBatchSize": 0,
+    "GrowthRateBatchSize": 2,
+    "TimeChangeBatch": 0,
+    "Horizon": 0,
+    "ParameterUCB": 2,
+    "Deviation": 1
+}

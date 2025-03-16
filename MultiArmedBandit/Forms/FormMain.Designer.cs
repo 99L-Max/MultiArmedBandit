@@ -71,7 +71,7 @@
             // _mainToolStripMenuItem
             // 
             this._mainToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this._mainToolStripMenuItem.Image = global::MultiArmedBandit.Properties.Resources.Main;
+            this._mainToolStripMenuItem.Image = global::MultiArmedBandit.Properties.Resources.Button_Main;
             this._mainToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this._mainToolStripMenuItem.Name = "_mainToolStripMenuItem";
             this._mainToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 25, 4, 0);
@@ -84,7 +84,7 @@
             // 
             this._calculateToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14F);
             this._calculateToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this._calculateToolStripMenuItem.Image = global::MultiArmedBandit.Properties.Resources.Calculate;
+            this._calculateToolStripMenuItem.Image = global::MultiArmedBandit.Properties.Resources.Button_Calculate;
             this._calculateToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this._calculateToolStripMenuItem.Name = "_calculateToolStripMenuItem";
             this._calculateToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 25, 4, 0);
@@ -96,7 +96,7 @@
             // _graphToolStripMenuItem
             // 
             this._graphToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this._graphToolStripMenuItem.Image = global::MultiArmedBandit.Properties.Resources.Graph;
+            this._graphToolStripMenuItem.Image = global::MultiArmedBandit.Properties.Resources.Button_Graph;
             this._graphToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this._graphToolStripMenuItem.Name = "_graphToolStripMenuItem";
             this._graphToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 25, 4, 0);
@@ -108,7 +108,7 @@
             // _strategyToolStripMenuItem
             // 
             this._strategyToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this._strategyToolStripMenuItem.Image = global::MultiArmedBandit.Properties.Resources.Strategy;
+            this._strategyToolStripMenuItem.Image = global::MultiArmedBandit.Properties.Resources.Button_AboutStrategy;
             this._strategyToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this._strategyToolStripMenuItem.Name = "_strategyToolStripMenuItem";
             this._strategyToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 25, 4, 0);
@@ -120,7 +120,7 @@
             // _aboutProgramToolStripMenuItem
             // 
             this._aboutProgramToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this._aboutProgramToolStripMenuItem.Image = global::MultiArmedBandit.Properties.Resources.AboutProgramm;
+            this._aboutProgramToolStripMenuItem.Image = global::MultiArmedBandit.Properties.Resources.Button_AboutProgram;
             this._aboutProgramToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this._aboutProgramToolStripMenuItem.Name = "_aboutProgramToolStripMenuItem";
             this._aboutProgramToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 25, 4, 0);
@@ -133,7 +133,7 @@
             // 
             this._exitToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this._exitToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this._exitToolStripMenuItem.Image = global::MultiArmedBandit.Properties.Resources.Exit;
+            this._exitToolStripMenuItem.Image = global::MultiArmedBandit.Properties.Resources.Button_Exit;
             this._exitToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this._exitToolStripMenuItem.Name = "_exitToolStripMenuItem";
             this._exitToolStripMenuItem.Size = new System.Drawing.Size(192, 36);
@@ -156,7 +156,7 @@
             // _pnlResize
             // 
             this._pnlResize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._pnlResize.BackgroundImage = global::MultiArmedBandit.Properties.Resources.Resize;
+            this._pnlResize.BackgroundImage = global::MultiArmedBandit.Properties.Resources.Button_Resize;
             this._pnlResize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this._pnlResize.Location = new System.Drawing.Point(548, 416);
             this._pnlResize.Name = "_pnlResize";
@@ -188,7 +188,7 @@
             // 
             this._btnMinimaze.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this._btnMinimaze.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this._btnMinimaze.BackgroundImage = global::MultiArmedBandit.Properties.Resources.Minimize;
+            this._btnMinimaze.BackgroundImage = global::MultiArmedBandit.Properties.Resources.Button_Minimize;
             this._btnMinimaze.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this._btnMinimaze.FlatAppearance.BorderColor = System.Drawing.Color.MediumSlateBlue;
             this._btnMinimaze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -203,7 +203,7 @@
             // 
             this._btnResize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this._btnResize.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this._btnResize.BackgroundImage = global::MultiArmedBandit.Properties.Resources.Resize_Min;
+            this._btnResize.BackgroundImage = global::MultiArmedBandit.Properties.Resources.Button_Resize_Min;
             this._btnResize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this._btnResize.FlatAppearance.BorderColor = System.Drawing.Color.MediumSlateBlue;
             this._btnResize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -218,7 +218,7 @@
             // 
             this._btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this._btnClose.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this._btnClose.BackgroundImage = global::MultiArmedBandit.Properties.Resources.Close;
+            this._btnClose.BackgroundImage = global::MultiArmedBandit.Properties.Resources.Button_Close;
             this._btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this._btnClose.FlatAppearance.BorderColor = System.Drawing.Color.MediumSlateBlue;
             this._btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
