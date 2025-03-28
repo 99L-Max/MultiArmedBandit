@@ -16,7 +16,7 @@ namespace MultiArmedBandit
             Expectation = expectation;
         }
 
-        public double RatioVariance { get; private set; } = 1d;
+        public double Variance { get; private set; }
         public double Income { get; private set; }
         public int Counter { get; private set; }
         public double ProfitabilityAssessment { get; private set; }
@@ -33,11 +33,11 @@ namespace MultiArmedBandit
                 Income += _oneStepIncome.Sample(Expectation);
         }
 
-        public void EstimateVariance(double maxVariance) =>
-            RatioVariance = Income * (Counter - Income) / (Counter * (Counter - 1)) / maxVariance;
+        public void EstimateVariance() =>
+            Variance = Income * (Counter - Income) / (Counter * (Counter - 1));
 
         public void ApplyUCB(double parameter, double sumCountGames) =>
-            ProfitabilityAssessment = Income / Counter + parameter * Math.Sqrt(RatioVariance * Math.Log(sumCountGames) / Counter);
+            ProfitabilityAssessment = Income / Counter + parameter * Math.Sqrt(Variance * Math.Log(sumCountGames) / Counter);
 
         public void ApplyThompsonSampling() =>
             ProfitabilityAssessment = new Beta(Income, Counter - Income).Sample();

@@ -22,7 +22,7 @@ namespace MultiArmedBandit
             {
                 _arms[i].Reset();
                 _arms[i].Play(_batches[i], ref _sumCounter);
-                _arms[i].EstimateVariance(MaxVariance);
+                _arms[i].EstimateVariance();
             }
 
             for (int i = CountArms; i < NumberBatches; i++)
