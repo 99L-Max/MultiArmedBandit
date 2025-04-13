@@ -80,7 +80,7 @@ namespace MultiArmedBandit
             this._lbl8.AutoSize = true;
             this._lbl8.Location = new System.Drawing.Point(193, 156);
             this._lbl8.Name = "_lbl8";
-            this._lbl8.Size = new System.Drawing.Size(196, 25);
+            this._lbl8.Size = new System.Drawing.Size(160, 20);
             this._lbl8.TabIndex = 32;
             this._lbl8.Text = "Макс.  дисперсия D:";
             // 
@@ -105,7 +105,7 @@ namespace MultiArmedBandit
             0,
             131072});
             this._numMaxVariance.Name = "_numMaxVariance";
-            this._numMaxVariance.Size = new System.Drawing.Size(112, 30);
+            this._numMaxVariance.Size = new System.Drawing.Size(112, 26);
             this._numMaxVariance.TabIndex = 33;
             this._numMaxVariance.Value = new decimal(new int[] {
             25,
@@ -118,7 +118,7 @@ namespace MultiArmedBandit
             this._lbl1.AutoSize = true;
             this._lbl1.Location = new System.Drawing.Point(208, 126);
             this._lbl1.Name = "_lbl1";
-            this._lbl1.Size = new System.Drawing.Size(181, 25);
+            this._lbl1.Size = new System.Drawing.Size(145, 20);
             this._lbl1.TabIndex = 1;
             this._lbl1.Text = "Мат. ожидание m:";
             // 
@@ -138,7 +138,7 @@ namespace MultiArmedBandit
             0,
             0});
             this._numCentralExpectation.Name = "_numCentralExpectation";
-            this._numCentralExpectation.Size = new System.Drawing.Size(112, 30);
+            this._numCentralExpectation.Size = new System.Drawing.Size(112, 26);
             this._numCentralExpectation.TabIndex = 2;
             this._numCentralExpectation.Value = new decimal(new int[] {
             5,
@@ -166,7 +166,7 @@ namespace MultiArmedBandit
             0,
             0});
             this._numCountGames.Name = "_numCountGames";
-            this._numCountGames.Size = new System.Drawing.Size(112, 30);
+            this._numCountGames.Size = new System.Drawing.Size(112, 26);
             this._numCountGames.TabIndex = 6;
             this._numCountGames.Value = new decimal(new int[] {
             200000,
@@ -179,7 +179,7 @@ namespace MultiArmedBandit
             this._lbl3.AutoSize = true;
             this._lbl3.Location = new System.Drawing.Point(207, 246);
             this._lbl3.Name = "_lbl3";
-            this._lbl3.Size = new System.Drawing.Size(184, 25);
+            this._lbl3.Size = new System.Drawing.Size(146, 20);
             this._lbl3.TabIndex = 5;
             this._lbl3.Text = "Число симуляций:";
             // 
@@ -188,7 +188,7 @@ namespace MultiArmedBandit
             this._lbl4.AutoSize = true;
             this._lbl4.Location = new System.Drawing.Point(215, 186);
             this._lbl4.Name = "_lbl4";
-            this._lbl4.Size = new System.Drawing.Size(168, 25);
+            this._lbl4.Size = new System.Drawing.Size(139, 20);
             this._lbl4.TabIndex = 18;
             this._lbl4.Text = "Число бандитов:";
             // 
@@ -207,7 +207,7 @@ namespace MultiArmedBandit
             0,
             0});
             this._numBanditsCount.Name = "_numBanditsCount";
-            this._numBanditsCount.Size = new System.Drawing.Size(112, 30);
+            this._numBanditsCount.Size = new System.Drawing.Size(112, 26);
             this._numBanditsCount.TabIndex = 23;
             this._numBanditsCount.Value = new decimal(new int[] {
             5,
@@ -226,7 +226,7 @@ namespace MultiArmedBandit
             0,
             0});
             this._numCountThreads.Name = "_numCountThreads";
-            this._numCountThreads.Size = new System.Drawing.Size(112, 30);
+            this._numCountThreads.Size = new System.Drawing.Size(112, 26);
             this._numCountThreads.TabIndex = 25;
             this._numCountThreads.Value = new decimal(new int[] {
             5,
@@ -239,7 +239,7 @@ namespace MultiArmedBandit
             this._lbl5.AutoSize = true;
             this._lbl5.Location = new System.Drawing.Point(226, 216);
             this._lbl5.Name = "_lbl5";
-            this._lbl5.Size = new System.Drawing.Size(156, 25);
+            this._lbl5.Size = new System.Drawing.Size(127, 20);
             this._lbl5.TabIndex = 24;
             this._lbl5.Text = "Число потоков:";
             // 
@@ -330,7 +330,7 @@ namespace MultiArmedBandit
             this._chkSoundPlay.CheckState = System.Windows.Forms.CheckState.Checked;
             this._chkSoundPlay.Location = new System.Drawing.Point(50, 166);
             this._chkSoundPlay.Name = "_chkSoundPlay";
-            this._chkSoundPlay.Size = new System.Drawing.Size(217, 29);
+            this._chkSoundPlay.Size = new System.Drawing.Size(180, 24);
             this._chkSoundPlay.TabIndex = 0;
             this._chkSoundPlay.Text = "Сигнал завершения";
             this._chkSoundPlay.UseVisualStyleBackColor = false;
@@ -423,28 +423,28 @@ namespace MultiArmedBandit
             // _lbl2
             // 
             this._lbl2.AutoSize = true;
-            this._lbl2.Location = new System.Drawing.Point(6, 96);
+            this._lbl2.Location = new System.Drawing.Point(17, 96);
             this._lbl2.Name = "_lbl2";
-            this._lbl2.Size = new System.Drawing.Size(276, 25);
+            this._lbl2.Size = new System.Drawing.Size(208, 20);
             this._lbl2.TabIndex = 39;
-            this._lbl2.Text = "Откл. от мат. ождидания d:";
+            this._lbl2.Text = "Откл. от мат. ожидания d:";
             // 
             // _txtDeviations
             // 
             this._txtDeviations.Location = new System.Drawing.Point(263, 93);
             this._txtDeviations.Name = "_txtDeviations";
             this._txtDeviations.ReadOnly = true;
-            this._txtDeviations.Size = new System.Drawing.Size(208, 30);
+            this._txtDeviations.Size = new System.Drawing.Size(208, 26);
             this._txtDeviations.TabIndex = 38;
             // 
             // _lbl7
             // 
             this._lbl7.AutoSize = true;
-            this._lbl7.Location = new System.Drawing.Point(106, 62);
+            this._lbl7.Location = new System.Drawing.Point(110, 62);
             this._lbl7.Name = "_lbl7";
-            this._lbl7.Size = new System.Drawing.Size(148, 25);
+            this._lbl7.Size = new System.Drawing.Size(115, 20);
             this._lbl7.TabIndex = 37;
-            this._lbl7.Text = "Правило M(k): ";
+            this._lbl7.Text = "Правило M(k):";
             // 
             // _cmbBatchSizeChangeRule
             // 
@@ -452,18 +452,18 @@ namespace MultiArmedBandit
             this._cmbBatchSizeChangeRule.FormattingEnabled = true;
             this._cmbBatchSizeChangeRule.Location = new System.Drawing.Point(231, 59);
             this._cmbBatchSizeChangeRule.Name = "_cmbBatchSizeChangeRule";
-            this._cmbBatchSizeChangeRule.Size = new System.Drawing.Size(240, 33);
+            this._cmbBatchSizeChangeRule.Size = new System.Drawing.Size(240, 28);
             this._cmbBatchSizeChangeRule.TabIndex = 36;
             this._cmbBatchSizeChangeRule.SelectedIndexChanged += new System.EventHandler(this.OnBatchSizeChangeRuleChanged);
             // 
             // _lbl6
             // 
             this._lbl6.AutoSize = true;
-            this._lbl6.Location = new System.Drawing.Point(127, 28);
+            this._lbl6.Location = new System.Drawing.Point(131, 28);
             this._lbl6.Name = "_lbl6";
-            this._lbl6.Size = new System.Drawing.Size(122, 25);
+            this._lbl6.Size = new System.Drawing.Size(94, 20);
             this._lbl6.TabIndex = 35;
-            this._lbl6.Text = "Стратегия: ";
+            this._lbl6.Text = "Стратегия:";
             // 
             // _cmbStrategy
             // 
@@ -471,7 +471,7 @@ namespace MultiArmedBandit
             this._cmbStrategy.FormattingEnabled = true;
             this._cmbStrategy.Location = new System.Drawing.Point(231, 25);
             this._cmbStrategy.Name = "_cmbStrategy";
-            this._cmbStrategy.Size = new System.Drawing.Size(240, 33);
+            this._cmbStrategy.Size = new System.Drawing.Size(240, 28);
             this._cmbStrategy.TabIndex = 34;
             // 
             // _lblDialog
@@ -537,7 +537,7 @@ namespace MultiArmedBandit
             // 
             // FormModeling
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(1100, 808);

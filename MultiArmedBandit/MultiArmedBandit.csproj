@@ -51,8 +51,8 @@
     <ApplicationIcon>Resources\Icons\Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MathNet.Numerics, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MathNet.Numerics.6.0.0-beta1\lib\net48\MathNet.Numerics.dll</HintPath>
+    <Reference Include="MathNet.Numerics, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Numerics.5.0.0\lib\net48\MathNet.Numerics.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -77,12 +77,14 @@
     <Compile Include="Classes\Others\Notificator.cs" />
     <Compile Include="Classes\Others\Sound.cs" />
     <Compile Include="Classes\Strategy\Arm.cs" />
+    <Compile Include="Classes\Strategy\ArmThompsonSampling.cs" />
+    <Compile Include="Classes\Strategy\ArmUCB.cs" />
     <Compile Include="Classes\Strategy\Bandit.cs" />
     <Compile Include="Classes\Strategy\BanditThompsonSampling.cs" />
     <Compile Include="Classes\Strategy\BanditUCB.cs" />
     <Compile Include="Classes\Strategy\GameData.cs" />
     <Compile Include="Classes\Strategy\HorizonBuilder.cs" />
-    <Compile Include="Classes\Strategy\OneStepIncome.cs" />
+    <Compile Include="Classes\Strategy\RandomVariable.cs" />
     <Compile Include="Classes\Strategy\Player.cs" />
     <Compile Include="Controls\Notification.cs">
       <SubType>Form</SubType>

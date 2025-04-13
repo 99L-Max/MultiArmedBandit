@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 
 namespace MultiArmedBandit
@@ -9,28 +8,30 @@ namespace MultiArmedBandit
     {
         private readonly double _sqrtDivDN;
         private readonly double _sqrtMulDN;
+        private double _maxPossibleIncome;
+        private double _gameIncome;
 
-        protected readonly Arm[] _arms;
-        protected readonly int[] _batches;
+        protected readonly int[] _batchSizes;
         protected int _sumCounter;
 
         public readonly double CentralExpectation;
         public readonly double MaxVariance;
+        public readonly int CountArms;
         public readonly int NumberBatches;
         public readonly int Horizon;
 
         public Action DeviationProcessed;
         public Action<Bandit> SimulationFinished;
 
-        public Bandit(double centralExpectation, double maxVariance, int countArms, IEnumerable<int> batches)
+        public Bandit(double centralExpectation, double maxVariance, int countArms, IEnumerable<int> batchSizes)
         {
-            _arms = new Arm[countArms];
-            _batches = batches.ToArray();
+            _batchSizes = batchSizes.ToArray();
 
+            CountArms = countArms;
             CentralExpectation = centralExpectation;
             MaxVariance = maxVariance;
-            NumberBatches = _batches.Length;
-            Horizon = _batches.Sum();
+            NumberBatches = _batchSizes.Length;
+            Horizon = _batchSizes.Sum();
 
             _sqrtDivDN = Math.Sqrt(maxVariance / Horizon);
             _sqrtMulDN = Math.Sqrt(maxVariance * Horizon);
@@ -42,17 +43,15 @@ namespace MultiArmedBandit
 
         public Dictionary<double, double> Regrets { get; private set; }
 
-        public int CountArms =>
-            _arms.Length;
-
         public virtual string GameResult =>
             $"l_max = {MaxRegrets:f2}\nd_max = {MaxDeviation:f1}";
 
-        public abstract void PlayStrategy();
+        protected abstract void CreateArms(double deviation, double normCoeff, ref double maxPossibleIncome);
+
+        protected abstract void PlayStrategy(ref double gameIncome);
 
         public void Play(IEnumerable<double> deviations, int countGames)
         {
-            double maxIncome;
             Regrets = deviations.ToDictionary(k => k, v => 0d);
 
             foreach (var dev in deviations)
@@ -63,18 +62,15 @@ namespace MultiArmedBandit
                     continue;
                 }
 
-                for (int i = 0; i < _arms.Length; i++)
-                    _arms[i] = new Arm(CentralExpectation + (i == 0 ? dev : -dev) * _sqrtDivDN);
-
-                maxIncome = _arms.Select(x => x.Expectation).Max() * Horizon;
+                CreateArms(dev, _sqrtDivDN, ref _maxPossibleIncome);
 
                 for (int num = 0; num < countGames; num++)
                 {
                     _sumCounter = 0;
 
-                    PlayStrategy();
+                    PlayStrategy(ref _gameIncome);
 
-                    Regrets[dev] += maxIncome - _arms.Select(x => x.Income).Sum();
+                    Regrets[dev] += _maxPossibleIncome - _gameIncome;
                 }
 
                 Regrets[dev] /= countGames * _sqrtMulDN;

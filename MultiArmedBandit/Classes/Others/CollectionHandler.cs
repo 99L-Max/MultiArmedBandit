@@ -23,17 +23,17 @@ namespace MultiArmedBandit
 
         public static IEnumerable<Bandit> CreateBandits(GameData gameData)
         {
-            var batches = new List<IEnumerable<int>>();
+            var batchSizes = new List<IEnumerable<int>>();
 
             for (int i = 0; i < gameData.CountBandits; i++)
-                batches.Add(HorizonBuilder.GetBatches(gameData.BatchSizeChangeRule, gameData.NumberBatches[i], gameData.StartBatchSize[i], gameData.GrowthRateBatchSize[i], gameData.TimeChangeBatch[i]));
+                batchSizes.Add(HorizonBuilder.GetBatches(gameData.BatchSizeChangeRule, gameData.NumberBatches[i], gameData.StartBatchSize[i], gameData.GrowthRateBatchSize[i], gameData.TimeChangeBatch[i]));
 
             if (gameData.Strategy == Strategy.UCB)
                 for (int i = 0; i < gameData.CountBandits; i++)
-                    yield return new BanditUCB(gameData.CentralExpectation, gameData.MaxVariance, gameData.CountArms[i], batches[i]);
+                    yield return new BanditUCB(gameData.CentralExpectation, gameData.MaxVariance, gameData.CountArms[i], batchSizes[i]);
             else
                 for (int i = 0; i < gameData.CountBandits; i++)
-                    yield return new BanditThompsonSampling(gameData.CentralExpectation, gameData.MaxVariance, gameData.CountArms[i], batches[i]);
+                    yield return new BanditThompsonSampling(gameData.CentralExpectation, gameData.MaxVariance, gameData.CountArms[i], batchSizes[i]);
         }
 
         public static string ConvertToShortString<T>(IEnumerable<T> collection)

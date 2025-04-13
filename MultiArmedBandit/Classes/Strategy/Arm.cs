@@ -1,17 +1,14 @@
-﻿using System;
-using MathNet.Numerics.Distributions;
-
-namespace MultiArmedBandit
+﻿namespace MultiArmedBandit
 {
-    class Arm
+    abstract class Arm
     {
-        private readonly OneStepIncome _oneStepIncome;
+        protected readonly RandomVariable _randomVariable;
 
         public readonly double Expectation;
 
         public Arm(double expectation)
         {
-            _oneStepIncome = new OneStepIncome();
+            _randomVariable = new RandomVariable();
 
             Expectation = expectation;
         }
@@ -19,27 +16,24 @@ namespace MultiArmedBandit
         public double Variance { get; private set; }
         public double Income { get; private set; }
         public int Counter { get; private set; }
-        public double ProfitabilityAssessment { get; private set; }
+        public double LastBatchIncome { get; private set; }
 
-        public void Reset() =>
-            ProfitabilityAssessment = Income = Counter = 0;
+        public virtual void Reset() =>
+            LastBatchIncome = Income = Counter = 0;
 
         public void Play(int countGames, ref int sumCountGames)
         {
-            Counter += countGames;
             sumCountGames += countGames;
+            Counter += countGames;
+            LastBatchIncome = 0d;
 
             while (countGames-- > 0)
-                Income += _oneStepIncome.Sample(Expectation);
+                LastBatchIncome += _randomVariable.BernoulliSample(Expectation);
+
+            Income += LastBatchIncome;
         }
 
         public void EstimateVariance() =>
             Variance = Income * (Counter - Income) / (Counter * (Counter - 1));
-
-        public void ApplyUCB(double parameter, double sumCountGames) =>
-            ProfitabilityAssessment = Income / Counter + parameter * Math.Sqrt(Variance * Math.Log(sumCountGames) / Counter);
-
-        public void ApplyThompsonSampling() =>
-            ProfitabilityAssessment = new Beta(Income, Counter - Income).Sample();
     }
 }
