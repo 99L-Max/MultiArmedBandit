@@ -33,7 +33,7 @@ namespace MultiArmedBandit
                     yield return new BanditUCB(gameData.CentralExpectation, gameData.MaxVariance, gameData.CountArms[i], batchSizes[i]);
             else
                 for (int i = 0; i < gameData.CountBandits; i++)
-                    yield return new BanditThompsonSampling(gameData.CentralExpectation, gameData.MaxVariance, gameData.CountArms[i], batchSizes[i]);
+                    yield return new BanditThompsonSampling(gameData.CentralExpectation, gameData.MaxVariance, gameData.CountArms[i], batchSizes[i], gameData.ConjugateDistribution);
         }
 
         public static string ConvertToShortString<T>(IEnumerable<T> collection)

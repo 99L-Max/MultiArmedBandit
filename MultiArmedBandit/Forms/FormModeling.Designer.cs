@@ -65,6 +65,8 @@ namespace MultiArmedBandit
             this._lblDialog = new System.Windows.Forms.Label();
             this._dataGridView = new System.Windows.Forms.DataGridView();
             this._timer = new System.Windows.Forms.Timer(this.components);
+            this._lbl9 = new System.Windows.Forms.Label();
+            this._cmbConjugateDistribution = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this._numMaxVariance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._numCentralExpectation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._numCountGames)).BeginInit();
@@ -78,7 +80,7 @@ namespace MultiArmedBandit
             // _lbl8
             // 
             this._lbl8.AutoSize = true;
-            this._lbl8.Location = new System.Drawing.Point(193, 156);
+            this._lbl8.Location = new System.Drawing.Point(193, 190);
             this._lbl8.Name = "_lbl8";
             this._lbl8.Size = new System.Drawing.Size(160, 20);
             this._lbl8.TabIndex = 32;
@@ -92,7 +94,7 @@ namespace MultiArmedBandit
             0,
             0,
             131072});
-            this._numMaxVariance.Location = new System.Drawing.Point(359, 154);
+            this._numMaxVariance.Location = new System.Drawing.Point(359, 188);
             this._numMaxVariance.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._numMaxVariance.Maximum = new decimal(new int[] {
             25,
@@ -116,7 +118,7 @@ namespace MultiArmedBandit
             // _lbl1
             // 
             this._lbl1.AutoSize = true;
-            this._lbl1.Location = new System.Drawing.Point(208, 126);
+            this._lbl1.Location = new System.Drawing.Point(208, 160);
             this._lbl1.Name = "_lbl1";
             this._lbl1.Size = new System.Drawing.Size(145, 20);
             this._lbl1.TabIndex = 1;
@@ -130,7 +132,7 @@ namespace MultiArmedBandit
             0,
             0,
             131072});
-            this._numCentralExpectation.Location = new System.Drawing.Point(359, 124);
+            this._numCentralExpectation.Location = new System.Drawing.Point(359, 158);
             this._numCentralExpectation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._numCentralExpectation.Maximum = new decimal(new int[] {
             1,
@@ -153,7 +155,7 @@ namespace MultiArmedBandit
             0,
             0,
             0});
-            this._numCountGames.Location = new System.Drawing.Point(359, 244);
+            this._numCountGames.Location = new System.Drawing.Point(359, 278);
             this._numCountGames.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._numCountGames.Maximum = new decimal(new int[] {
             1000000,
@@ -177,7 +179,7 @@ namespace MultiArmedBandit
             // _lbl3
             // 
             this._lbl3.AutoSize = true;
-            this._lbl3.Location = new System.Drawing.Point(207, 246);
+            this._lbl3.Location = new System.Drawing.Point(207, 280);
             this._lbl3.Name = "_lbl3";
             this._lbl3.Size = new System.Drawing.Size(146, 20);
             this._lbl3.TabIndex = 5;
@@ -186,7 +188,7 @@ namespace MultiArmedBandit
             // _lbl4
             // 
             this._lbl4.AutoSize = true;
-            this._lbl4.Location = new System.Drawing.Point(215, 186);
+            this._lbl4.Location = new System.Drawing.Point(215, 220);
             this._lbl4.Name = "_lbl4";
             this._lbl4.Size = new System.Drawing.Size(139, 20);
             this._lbl4.TabIndex = 18;
@@ -194,7 +196,7 @@ namespace MultiArmedBandit
             // 
             // _numBanditsCount
             // 
-            this._numBanditsCount.Location = new System.Drawing.Point(359, 184);
+            this._numBanditsCount.Location = new System.Drawing.Point(359, 218);
             this._numBanditsCount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._numBanditsCount.Maximum = new decimal(new int[] {
             500,
@@ -218,7 +220,7 @@ namespace MultiArmedBandit
             // 
             // _numCountThreads
             // 
-            this._numCountThreads.Location = new System.Drawing.Point(359, 214);
+            this._numCountThreads.Location = new System.Drawing.Point(359, 248);
             this._numCountThreads.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._numCountThreads.Minimum = new decimal(new int[] {
             1,
@@ -237,7 +239,7 @@ namespace MultiArmedBandit
             // _lbl5
             // 
             this._lbl5.AutoSize = true;
-            this._lbl5.Location = new System.Drawing.Point(226, 216);
+            this._lbl5.Location = new System.Drawing.Point(226, 250);
             this._lbl5.Name = "_lbl5";
             this._lbl5.Size = new System.Drawing.Size(127, 20);
             this._lbl5.TabIndex = 24;
@@ -300,7 +302,7 @@ namespace MultiArmedBandit
             this._grpButtons.Controls.Add(this._btnStart);
             this._grpButtons.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this._grpButtons.ForeColor = System.Drawing.Color.White;
-            this._grpButtons.Location = new System.Drawing.Point(611, 301);
+            this._grpButtons.Location = new System.Drawing.Point(611, 333);
             this._grpButtons.Name = "_grpButtons";
             this._grpButtons.Size = new System.Drawing.Size(482, 198);
             this._grpButtons.TabIndex = 8;
@@ -379,6 +381,8 @@ namespace MultiArmedBandit
             // _grpSimulationSettings
             // 
             this._grpSimulationSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._grpSimulationSettings.Controls.Add(this._lbl9);
+            this._grpSimulationSettings.Controls.Add(this._cmbConjugateDistribution);
             this._grpSimulationSettings.Controls.Add(this._btnDeviationsSettings);
             this._grpSimulationSettings.Controls.Add(this._lbl2);
             this._grpSimulationSettings.Controls.Add(this._numCountThreads);
@@ -400,7 +404,7 @@ namespace MultiArmedBandit
             this._grpSimulationSettings.ForeColor = System.Drawing.Color.White;
             this._grpSimulationSettings.Location = new System.Drawing.Point(611, 12);
             this._grpSimulationSettings.Name = "_grpSimulationSettings";
-            this._grpSimulationSettings.Size = new System.Drawing.Size(482, 283);
+            this._grpSimulationSettings.Size = new System.Drawing.Size(482, 315);
             this._grpSimulationSettings.TabIndex = 42;
             this._grpSimulationSettings.TabStop = false;
             this._grpSimulationSettings.Text = "Настройки симуляций";
@@ -412,7 +416,7 @@ namespace MultiArmedBandit
             this._btnDeviationsSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this._btnDeviationsSettings.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this._btnDeviationsSettings.ForeColor = System.Drawing.Color.Black;
-            this._btnDeviationsSettings.Location = new System.Drawing.Point(231, 93);
+            this._btnDeviationsSettings.Location = new System.Drawing.Point(231, 127);
             this._btnDeviationsSettings.Name = "_btnDeviationsSettings";
             this._btnDeviationsSettings.Size = new System.Drawing.Size(26, 26);
             this._btnDeviationsSettings.TabIndex = 48;
@@ -423,7 +427,7 @@ namespace MultiArmedBandit
             // _lbl2
             // 
             this._lbl2.AutoSize = true;
-            this._lbl2.Location = new System.Drawing.Point(17, 96);
+            this._lbl2.Location = new System.Drawing.Point(17, 130);
             this._lbl2.Name = "_lbl2";
             this._lbl2.Size = new System.Drawing.Size(208, 20);
             this._lbl2.TabIndex = 39;
@@ -431,7 +435,7 @@ namespace MultiArmedBandit
             // 
             // _txtDeviations
             // 
-            this._txtDeviations.Location = new System.Drawing.Point(263, 93);
+            this._txtDeviations.Location = new System.Drawing.Point(263, 127);
             this._txtDeviations.Name = "_txtDeviations";
             this._txtDeviations.ReadOnly = true;
             this._txtDeviations.Size = new System.Drawing.Size(208, 26);
@@ -440,7 +444,7 @@ namespace MultiArmedBandit
             // _lbl7
             // 
             this._lbl7.AutoSize = true;
-            this._lbl7.Location = new System.Drawing.Point(110, 62);
+            this._lbl7.Location = new System.Drawing.Point(110, 96);
             this._lbl7.Name = "_lbl7";
             this._lbl7.Size = new System.Drawing.Size(115, 20);
             this._lbl7.TabIndex = 37;
@@ -450,7 +454,7 @@ namespace MultiArmedBandit
             // 
             this._cmbBatchSizeChangeRule.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._cmbBatchSizeChangeRule.FormattingEnabled = true;
-            this._cmbBatchSizeChangeRule.Location = new System.Drawing.Point(231, 59);
+            this._cmbBatchSizeChangeRule.Location = new System.Drawing.Point(231, 93);
             this._cmbBatchSizeChangeRule.Name = "_cmbBatchSizeChangeRule";
             this._cmbBatchSizeChangeRule.Size = new System.Drawing.Size(240, 28);
             this._cmbBatchSizeChangeRule.TabIndex = 36;
@@ -481,9 +485,9 @@ namespace MultiArmedBandit
             this._lblDialog.BackColor = System.Drawing.Color.White;
             this._lblDialog.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this._lblDialog.ForeColor = System.Drawing.Color.Black;
-            this._lblDialog.Location = new System.Drawing.Point(612, 502);
+            this._lblDialog.Location = new System.Drawing.Point(612, 534);
             this._lblDialog.Name = "_lblDialog";
-            this._lblDialog.Size = new System.Drawing.Size(481, 257);
+            this._lblDialog.Size = new System.Drawing.Size(481, 225);
             this._lblDialog.TabIndex = 47;
             this._lblDialog.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -535,6 +539,24 @@ namespace MultiArmedBandit
             this._timer.Interval = 1000;
             this._timer.Tick += new System.EventHandler(this.OnTimerTick);
             // 
+            // _lbl99
+            // 
+            this._lbl9.AutoSize = true;
+            this._lbl9.Location = new System.Drawing.Point(27, 62);
+            this._lbl9.Name = "_lbl99";
+            this._lbl9.Size = new System.Drawing.Size(198, 20);
+            this._lbl9.TabIndex = 50;
+            this._lbl9.Text = "Сопряж. распределение:";
+            // 
+            // _cmbConjugateDistribution
+            // 
+            this._cmbConjugateDistribution.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._cmbConjugateDistribution.FormattingEnabled = true;
+            this._cmbConjugateDistribution.Location = new System.Drawing.Point(231, 59);
+            this._cmbConjugateDistribution.Name = "_cmbConjugateDistribution";
+            this._cmbConjugateDistribution.Size = new System.Drawing.Size(240, 28);
+            this._cmbConjugateDistribution.TabIndex = 49;
+            // 
             // FormModeling
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -570,6 +592,7 @@ namespace MultiArmedBandit
 
         #endregion
         private System.Windows.Forms.Button _btnCancel;
+        private System.Windows.Forms.Button _btnDeviationsSettings;
         private System.Windows.Forms.Button _btnNew;
         private System.Windows.Forms.Button _btnOpen;
         private System.Windows.Forms.Button _btnPause;
@@ -577,6 +600,7 @@ namespace MultiArmedBandit
         private System.Windows.Forms.Button _btnStart;
         private System.Windows.Forms.CheckBox _chkSoundPlay;
         private System.Windows.Forms.ComboBox _cmbBatchSizeChangeRule;
+        private System.Windows.Forms.ComboBox _cmbConjugateDistribution;
         private System.Windows.Forms.ComboBox _cmbStrategy;
         private System.Windows.Forms.DataGridView _dataGridView;
         private System.Windows.Forms.GroupBox _grpButtons;
@@ -589,15 +613,16 @@ namespace MultiArmedBandit
         private System.Windows.Forms.Label _lbl6;
         private System.Windows.Forms.Label _lbl7;
         private System.Windows.Forms.Label _lbl8;
+        private System.Windows.Forms.Label _lbl9;
         private System.Windows.Forms.Label _lblDialog;
         private System.Windows.Forms.NumericUpDown _numBanditsCount;
         private System.Windows.Forms.NumericUpDown _numCentralExpectation;
+        private System.Windows.Forms.NumericUpDown _numCountGames;
         private System.Windows.Forms.NumericUpDown _numCountThreads;
         private System.Windows.Forms.NumericUpDown _numMaxVariance;
-        private System.Windows.Forms.NumericUpDown _numCountGames;
         private System.Windows.Forms.ProgressBar _progressBar;
         private System.Windows.Forms.TextBox _txtDeviations;
         private System.Windows.Forms.Timer _timer;
-        private System.Windows.Forms.Button _btnDeviationsSettings;
+
     }
 }

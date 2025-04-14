@@ -10,7 +10,11 @@
         {
             _randomVariable = new RandomVariable();
 
+            if (expectation < 0d) expectation = 0d;
+            if (expectation > 1d) expectation = 1d;
+
             Expectation = expectation;
+            Variance = expectation * (1d - expectation);
         }
 
         public double Variance { get; private set; }

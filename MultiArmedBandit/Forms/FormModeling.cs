@@ -31,11 +31,14 @@ namespace MultiArmedBandit
             CreateTable();
             OnBanditsCountChanged(_numBanditsCount, EventArgs.Empty);
 
-            _cmbBatchSizeChangeRule.Items.AddRange(Enum.GetNames(typeof(BatchSizeChangeRule)));
-            _cmbStrategy.Items.AddRange(Enum.GetNames(typeof(Strategy)));
+            SetComboBoxValues<Strategy>(_cmbStrategy);
+            SetComboBoxValues<ConjugateDistribution>(_cmbConjugateDistribution);
+            SetComboBoxValues<BatchSizeChangeRule>(_cmbBatchSizeChangeRule);
 
             _btnPause.Enabled = _btnCancel.Enabled = _btnSave.Enabled = false;
-            _cmbBatchSizeChangeRule.SelectedIndex = _cmbStrategy.SelectedIndex = 0;
+
+            foreach (Control ctrl in _grpSimulationSettings.Controls)
+                if (ctrl is ComboBox cmb) cmb.SelectedIndex = 0;
 
             _dataGridView.CellValueChanged += OnDataGridViewCellValueChanged;
         }
@@ -68,6 +71,9 @@ namespace MultiArmedBandit
                 _progressBar.Visible = !value;
             }
         }
+
+        private void SetComboBoxValues<T>(ComboBox comboBox) =>
+            comboBox.Items.AddRange(Enum.GetNames(typeof(T)));
 
         private void CreateTable()
         {
@@ -216,6 +222,7 @@ namespace MultiArmedBandit
 
                 BatchSizeChangeRule = (BatchSizeChangeRule)_cmbBatchSizeChangeRule.SelectedIndex,
                 Strategy = (Strategy)_cmbStrategy.SelectedIndex,
+                ConjugateDistribution = (ConjugateDistribution)_cmbConjugateDistribution.SelectedIndex,
 
                 CountArms = GetColumnInt(CollectionNames.CountArms),
                 NumberBatches = GetColumnInt(CollectionNames.NumberBatches),
@@ -307,6 +314,7 @@ namespace MultiArmedBandit
 
             _cmbStrategy.SelectedIndex = (int)gameData.Strategy;
             _cmbBatchSizeChangeRule.SelectedIndex = (int)gameData.BatchSizeChangeRule;
+            _cmbConjugateDistribution.SelectedIndex = (int)gameData.ConjugateDistribution;
 
             SetColumn(CollectionNames.CountArms, gameData.CountArms);
             SetColumn(CollectionNames.NumberBatches, gameData.NumberBatches);

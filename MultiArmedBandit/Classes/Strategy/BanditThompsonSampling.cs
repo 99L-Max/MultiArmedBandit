@@ -5,12 +5,24 @@ namespace MultiArmedBandit
 {
     class BanditThompsonSampling : Bandit
     {
-        private readonly ArmThompsonSampling[] _arms;
+        private delegate void Sample();
 
-        public BanditThompsonSampling(double centralExpectation, double maxVariance, int countArms, IEnumerable<int> batchSizes) :
+        private readonly ArmThompsonSampling[] _arms;
+        private readonly Sample _sample;
+
+        public readonly ConjugateDistribution ConjugateDistribution;
+
+        public BanditThompsonSampling(double centralExpectation, double maxVariance, int countArms, IEnumerable<int> batchSizes, ConjugateDistribution conjugateDistribution) :
             base(centralExpectation, maxVariance, countArms, batchSizes)
         {
             _arms = new ArmThompsonSampling[countArms];
+
+            ConjugateDistribution = conjugateDistribution;
+
+            if (ConjugateDistribution == ConjugateDistribution.Beta)
+                _sample = () => { foreach (var arm in _arms) arm.BetaSample(); };
+            else
+                _sample = () => { foreach (var arm in _arms) arm.NormSample(); };
         }
 
         protected override void CreateArms(double deviation, double normCoeff, ref double maxPossibleIncome)
@@ -34,11 +46,7 @@ namespace MultiArmedBandit
 
             for (int i = CountArms; i < NumberBatches; i++)
             {
-                foreach (var arm in _arms)
-                {
-                    arm.EstimateValues();
-                    arm.Sample();
-                }
+                _sample();
 
                 bestArm = _arms.OrderByDescending(x => x.RandomThompsonVariable).First();
                 bestArm.Play(_batchSizes[i], ref _sumCounter);

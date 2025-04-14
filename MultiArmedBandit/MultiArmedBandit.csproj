@@ -84,8 +84,8 @@
     <Compile Include="Classes\Strategy\BanditUCB.cs" />
     <Compile Include="Classes\Strategy\GameData.cs" />
     <Compile Include="Classes\Strategy\HorizonBuilder.cs" />
-    <Compile Include="Classes\Strategy\RandomVariable.cs" />
     <Compile Include="Classes\Strategy\Player.cs" />
+    <Compile Include="Classes\Strategy\RandomVariable.cs" />
     <Compile Include="Controls\Notification.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="Enums\BatchSizeChangeRule.cs" />
     <Compile Include="Enums\CollectionNames.cs" />
+    <Compile Include="Enums\ConjugateDistribution.cs" />
     <Compile Include="Enums\NotificationAction.cs" />
     <Compile Include="Enums\Strategy.cs" />
     <Compile Include="Enums\TypeForm.cs" />

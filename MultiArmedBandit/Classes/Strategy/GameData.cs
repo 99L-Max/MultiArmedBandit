@@ -19,6 +19,7 @@ namespace MultiArmedBandit
 
         public BatchSizeChangeRule BatchSizeChangeRule { get; set; }
         public Strategy Strategy { get; set; }
+        public ConjugateDistribution ConjugateDistribution { get; set; }
         public int CountBandits { get; set; }
         public int CountGames { get; set; }
         public int CountThreads { get; set; }

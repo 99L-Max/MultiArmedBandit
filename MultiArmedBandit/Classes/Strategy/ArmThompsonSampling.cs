@@ -23,16 +23,18 @@
             _variancePriopi = startBatchSize;
         }
 
-        public void EstimateValues()
+        public void NormSample()
         {
             var prevVariance = _varianceThompson;
             var prevExpectation = _expectationThompson;
 
             _varianceThompson = 1d / (1d / prevVariance + 1d / _variancePriopi);
             _expectationThompson = _varianceThompson * (prevExpectation / prevVariance + LastBatchIncome / _variancePriopi);
+
+            RandomThompsonVariable = _randomVariable.NormSample(_expectationThompson, _varianceThompson);
         }
 
-        public void Sample() =>
-            RandomThompsonVariable = _randomVariable.NormSample(_expectationThompson, _varianceThompson);
+        public void BetaSample() =>
+            RandomThompsonVariable = _randomVariable.BetaSample(Income, Counter - Income);
     }
 }
