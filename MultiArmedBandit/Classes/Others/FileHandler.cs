@@ -17,19 +17,18 @@ namespace MultiArmedBandit
             {
                 ofDialog.Filter = "Файлы Json|*.json";
 
-                if (ofDialog.ShowDialog() != DialogResult.OK)
-                    return null;
+                if (ofDialog.ShowDialog() == DialogResult.OK)
+                    try
+                    {
+                        var json = File.ReadAllText(ofDialog.FileName);
+                        return JsonConvert.DeserializeObject<GameData>(json);
+                    }
+                    catch (Exception exc)
+                    {
+                        MessageBox.Show(exc.ToString(), "Ошибка чтения файла", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
-                try
-                {
-                    var json = File.ReadAllText(ofDialog.FileName);
-                    return JsonConvert.DeserializeObject<GameData>(json);
-                }
-                catch (Exception exc)
-                {
-                    MessageBox.Show(exc.ToString(), "Ошибка чтения файла", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
+                return null;
             }
         }
 
@@ -40,19 +39,17 @@ namespace MultiArmedBandit
                 isSaved = false;
                 sfDialog.Filter = "Файлы Json|*.json";
 
-                if (sfDialog.ShowDialog() != DialogResult.OK)
-                    return;
-
-                try
-                {
-                    var json = JsonConvert.SerializeObject(gameData, Formatting.Indented);
-                    File.WriteAllText(sfDialog.FileName, json);
-                    isSaved = true;
-                }
-                catch (Exception exc)
-                {
-                    MessageBox.Show(exc.ToString(), "Ошибка записи файла", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                if (sfDialog.ShowDialog() == DialogResult.OK)
+                    try
+                    {
+                        var json = JsonConvert.SerializeObject(gameData, Formatting.Indented);
+                        File.WriteAllText(sfDialog.FileName, json);
+                        isSaved = true;
+                    }
+                    catch (Exception exc)
+                    {
+                        MessageBox.Show(exc.ToString(), "Ошибка записи файла", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
             }
         }
 
@@ -62,18 +59,16 @@ namespace MultiArmedBandit
             {
                 sfDialog.Filter = "Текстовые файлы|*.txt";
 
-                if (sfDialog.ShowDialog() != DialogResult.OK)
-                    return;
-
-                try
-                {
-                    using (var writer = new StreamWriter(sfDialog.FileName))
-                        writer.Write(data);
-                }
-                catch (Exception exc)
-                {
-                    MessageBox.Show(exc.ToString(), "Ошибка записи файла", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                if (sfDialog.ShowDialog() == DialogResult.OK)
+                    try
+                    {
+                        using (var writer = new StreamWriter(sfDialog.FileName))
+                            writer.Write(data);
+                    }
+                    catch (Exception exc)
+                    {
+                        MessageBox.Show(exc.ToString(), "Ошибка записи файла", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
             }
         }
 
@@ -83,10 +78,8 @@ namespace MultiArmedBandit
             {
                 sfDialog.Filter = "Изображения|*.png";
 
-                if (sfDialog.ShowDialog() != DialogResult.OK)
-                    return;
-
-                chart.SaveImage(sfDialog.FileName, ImageFormat.Png);
+                if (sfDialog.ShowDialog() == DialogResult.OK)
+                    chart.SaveImage(sfDialog.FileName, ImageFormat.Png);
             }
         }
 

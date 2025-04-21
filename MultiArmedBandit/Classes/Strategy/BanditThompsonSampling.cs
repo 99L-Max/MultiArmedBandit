@@ -25,7 +25,7 @@ namespace MultiArmedBandit
                 _sample = () => { foreach (var arm in _arms) arm.NormSample(); };
         }
 
-        protected override void CreateArms(double deviation, double normCoeff, ref double maxPossibleIncome)
+        protected override void CreateArms(double deviation, double normCoeff, out double maxPossibleIncome)
         {
             for (int i = 0; i < _arms.Length; i++)
                 _arms[i] = new ArmThompsonSampling(CentralExpectation + (i == 0 ? deviation : -deviation) * normCoeff);
@@ -33,7 +33,7 @@ namespace MultiArmedBandit
             maxPossibleIncome = _arms.Select(x => x.Expectation).Max() * Horizon;
         }
 
-        protected override void PlayStrategy(ref double gameIncome)
+        protected override void PlayStrategy(out double gameIncome)
         {
             ArmThompsonSampling bestArm;
 

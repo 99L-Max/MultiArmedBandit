@@ -8,8 +8,6 @@ namespace MultiArmedBandit
     {
         private readonly double _sqrtDivDN;
         private readonly double _sqrtMulDN;
-        private double _maxPossibleIncome;
-        private double _gameIncome;
 
         protected readonly int[] _batchSizes;
         protected int _sumCounter;
@@ -46,9 +44,9 @@ namespace MultiArmedBandit
         public virtual string GameResult =>
             $"l_max = {MaxRegrets:f2}\nd_max = {MaxDeviation:f1}";
 
-        protected abstract void CreateArms(double deviation, double normCoeff, ref double maxPossibleIncome);
+        protected abstract void CreateArms(double deviation, double normCoeff, out double maxPossibleIncome);
 
-        protected abstract void PlayStrategy(ref double gameIncome);
+        protected abstract void PlayStrategy(out double gameIncome);
 
         public void Play(IEnumerable<double> deviations, int countGames)
         {
@@ -62,15 +60,15 @@ namespace MultiArmedBandit
                     continue;
                 }
 
-                CreateArms(dev, _sqrtDivDN, ref _maxPossibleIncome);
+                CreateArms(dev, _sqrtDivDN, out double maxPossibleIncome);
 
                 for (int num = 0; num < countGames; num++)
                 {
                     _sumCounter = 0;
 
-                    PlayStrategy(ref _gameIncome);
+                    PlayStrategy(out double gameIncome);
 
-                    Regrets[dev] += _maxPossibleIncome - _gameIncome;
+                    Regrets[dev] += maxPossibleIncome - gameIncome;
                 }
 
                 Regrets[dev] /= countGames * _sqrtMulDN;
