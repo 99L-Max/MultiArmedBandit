@@ -27,6 +27,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -200,6 +202,8 @@
     <None Include="Resources\Dictionaries\Dictionary_Collection_Minimum.json" />
     <None Include="Resources\Dictionaries\Dictionary_Collection_ReadOnly.json" />
     <None Include="Resources\Dictionaries\Dictionary_Collection_Titles.json" />
+    <None Include="Resources\Files\AboutProgram.rtf" />
+    <None Include="Resources\Files\AboutStrategy.rtf" />
     <None Include="Resources\Sounds\Sound_Done.gz" />
   </ItemGroup>
   <ItemGroup>
@@ -218,8 +222,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Files\AboutProgram.txt" />
-    <Content Include="Resources\Files\AboutStrategy.txt" />
     <Content Include="Resources\Icons\Icon.ico" />
     <Content Include="Resources\Textures\Button_AboutProgram.png" />
     <Content Include="Resources\Textures\Button_AboutStrategy.png" />

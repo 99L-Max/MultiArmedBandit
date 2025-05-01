@@ -28,37 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this._txtBox = new System.Windows.Forms.TextBox();
+            this._richTextBox = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
-            // _txtBox
+            // _richTextBox
             // 
-            this._txtBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this._txtBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._txtBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this._txtBox.ForeColor = System.Drawing.Color.White;
-            this._txtBox.Location = new System.Drawing.Point(0, 0);
-            this._txtBox.Multiline = true;
-            this._txtBox.Name = "_txtBox";
-            this._txtBox.ReadOnly = true;
-            this._txtBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this._txtBox.Size = new System.Drawing.Size(318, 217);
-            this._txtBox.TabIndex = 1;
+            this._richTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this._richTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._richTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this._richTextBox.ForeColor = System.Drawing.Color.White;
+            this._richTextBox.Location = new System.Drawing.Point(0, 0);
+            this._richTextBox.Name = "_richTextBox";
+            this._richTextBox.ReadOnly = true;
+            this._richTextBox.Size = new System.Drawing.Size(318, 217);
+            this._richTextBox.TabIndex = 0;
+            this._richTextBox.Text = "";
+            this._richTextBox.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.OnRichTextBoxLinkClicked);
             // 
             // FormInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(318, 217);
-            this.Controls.Add(this._txtBox);
+            this.Controls.Add(this._richTextBox);
             this.Name = "FormInfo";
             this.Text = "FormInfo";
             this.ResumeLayout(false);
-            this.PerformLayout();
+
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox _txtBox;
+        private System.Windows.Forms.RichTextBox _richTextBox;
     }
 }
