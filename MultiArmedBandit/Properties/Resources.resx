@@ -160,20 +160,8 @@
   <data name="Button_Settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Textures\Button_Settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Dictionary_Collection_DecimalPlaces" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Dictionaries\Dictionary_Collection_DecimalPlaces.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Dictionary_Collection_Default" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Dictionaries\Dictionary_Collection_Default.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Dictionary_Collection_Minimum" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Dictionaries\Dictionary_Collection_Minimum.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Dictionary_Collection_ReadOnly" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Dictionaries\Dictionary_Collection_ReadOnly.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Dictionary_Collection_Titles" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Dictionaries\Dictionary_Collection_Titles.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="CollectionsData" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CollectionsData\CollectionsData.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons\Icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

@@ -73,109 +73,117 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Others\CollectionHandler.cs" />
-    <Compile Include="Classes\Others\FileHandler.cs" />
-    <Compile Include="Classes\Others\ModifyProgressBarColor.cs" />
-    <Compile Include="Classes\Others\Notificator.cs" />
-    <Compile Include="Classes\Others\Sound.cs" />
-    <Compile Include="Classes\Strategy\Arm.cs" />
-    <Compile Include="Classes\Strategy\ArmThompsonSampling.cs" />
-    <Compile Include="Classes\Strategy\ArmUCB.cs" />
-    <Compile Include="Classes\Strategy\Bandit.cs" />
-    <Compile Include="Classes\Strategy\BanditThompsonSampling.cs" />
-    <Compile Include="Classes\Strategy\BanditUCB.cs" />
-    <Compile Include="Classes\Strategy\GameData.cs" />
-    <Compile Include="Classes\Strategy\HorizonBuilder.cs" />
-    <Compile Include="Classes\Strategy\Player.cs" />
-    <Compile Include="Classes\Strategy\RandomVariable.cs" />
-    <Compile Include="Controls\Notification.cs">
+    <Compile Include="Code\Classes\Collections\CollectionHandler.cs" />
+    <Compile Include="Code\Classes\Collections\CollectionsData.cs" />
+    <Compile Include="Code\Classes\Factories\ColorsFactory.cs" />
+    <Compile Include="Code\Classes\Factories\EnumFactory.cs" />
+    <Compile Include="Code\Classes\Factories\NumbersFactory.cs" />
+    <Compile Include="Code\Classes\Modifications\ModifyMath.cs" />
+    <Compile Include="Code\Classes\Modifications\ModifyProgressBarColor.cs" />
+    <Compile Include="Code\Classes\Modifications\Sound.cs" />
+    <Compile Include="Code\Classes\Strategy\Arms\Arm.cs" />
+    <Compile Include="Code\Classes\Strategy\Arms\ArmThompsonSampling.cs" />
+    <Compile Include="Code\Classes\Strategy\Arms\ArmUCB.cs" />
+    <Compile Include="Code\Classes\Strategy\Bandits\Bandit.cs" />
+    <Compile Include="Code\Classes\Strategy\Bandits\BanditThompsonSampling.cs" />
+    <Compile Include="Code\Classes\Strategy\Bandits\BanditUCB.cs" />
+    <Compile Include="Code\Classes\Strategy\HorizonBuilder.cs" />
+    <Compile Include="Code\Classes\Strategy\Player.cs" />
+    <Compile Include="Code\Classes\Strategy\RandomVariable.cs" />
+    <Compile Include="Code\Classes\User Files\FileReader.cs" />
+    <Compile Include="Code\Classes\User Files\FileWriter.cs" />
+    <Compile Include="Code\Enums\BatchSizeChangeRule.cs" />
+    <Compile Include="Code\Enums\CollectionNames.cs" />
+    <Compile Include="Code\Enums\ConjugateDistribution.cs" />
+    <Compile Include="Code\Enums\NotificationAction.cs" />
+    <Compile Include="Code\Enums\SavingData.cs" />
+    <Compile Include="Code\Enums\Strategy.cs" />
+    <Compile Include="Code\Enums\TypeForm.cs" />
+    <Compile Include="Code\Structs\CollectionData.cs" />
+    <Compile Include="Code\Structs\GeneralBanditsData.cs" />
+    <Compile Include="Code\Structs\Regret.cs" />
+    <Compile Include="Controls\Forms\FormArraySettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controls\Notification.Designer.cs">
-      <DependentUpon>Notification.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Enums\BatchSizeChangeRule.cs" />
-    <Compile Include="Enums\CollectionNames.cs" />
-    <Compile Include="Enums\ConjugateDistribution.cs" />
-    <Compile Include="Enums\NotificationAction.cs" />
-    <Compile Include="Enums\Strategy.cs" />
-    <Compile Include="Enums\TypeForm.cs" />
-    <Compile Include="Forms\FormArraySettings.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormArraySettings.Designer.cs">
+    <Compile Include="Controls\Forms\FormArraySettings.Designer.cs">
       <DependentUpon>FormArraySettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormChart.cs">
+    <Compile Include="Controls\Forms\FormChart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormChart.Designer.cs">
+    <Compile Include="Controls\Forms\FormChart.Designer.cs">
       <DependentUpon>FormChart.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormDataSave.cs">
+    <Compile Include="Controls\Forms\FormDataSave.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormDataSave.Designer.cs">
+    <Compile Include="Controls\Forms\FormDataSave.Designer.cs">
       <DependentUpon>FormDataSave.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormDateTime.cs">
+    <Compile Include="Controls\Forms\FormDateTime.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormDateTime.Designer.cs">
+    <Compile Include="Controls\Forms\FormDateTime.Designer.cs">
       <DependentUpon>FormDateTime.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormInfo.cs">
+    <Compile Include="Controls\Forms\FormInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormInfo.Designer.cs">
+    <Compile Include="Controls\Forms\FormInfo.Designer.cs">
       <DependentUpon>FormInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormLineSettings.cs">
+    <Compile Include="Controls\Forms\FormLineSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormLineSettings.Designer.cs">
+    <Compile Include="Controls\Forms\FormLineSettings.Designer.cs">
       <DependentUpon>FormLineSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormMain.cs">
+    <Compile Include="Controls\Forms\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormMain.Designer.cs">
+    <Compile Include="Controls\Forms\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormModeling.cs">
+    <Compile Include="Controls\Forms\FormModeling.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormModeling.Designer.cs">
+    <Compile Include="Controls\Forms\FormModeling.Designer.cs">
       <DependentUpon>FormModeling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Special\Notification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Special\Notification.Designer.cs">
+      <DependentUpon>Notification.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Controls\Notification.resx">
-      <DependentUpon>Notification.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormArraySettings.resx">
+    <EmbeddedResource Include="Controls\Forms\FormArraySettings.resx">
       <DependentUpon>FormArraySettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormChart.resx">
+    <EmbeddedResource Include="Controls\Forms\FormChart.resx">
       <DependentUpon>FormChart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormDataSave.resx">
+    <EmbeddedResource Include="Controls\Forms\FormDataSave.resx">
       <DependentUpon>FormDataSave.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormDateTime.resx">
+    <EmbeddedResource Include="Controls\Forms\FormDateTime.resx">
       <DependentUpon>FormDateTime.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormInfo.resx">
+    <EmbeddedResource Include="Controls\Forms\FormInfo.resx">
       <DependentUpon>FormInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormLineSettings.resx">
+    <EmbeddedResource Include="Controls\Forms\FormLineSettings.resx">
       <DependentUpon>FormLineSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormMain.resx">
+    <EmbeddedResource Include="Controls\Forms\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormModeling.resx">
+    <EmbeddedResource Include="Controls\Forms\FormModeling.resx">
       <DependentUpon>FormModeling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Special\Notification.resx">
+      <DependentUpon>Notification.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -197,11 +205,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\Dictionaries\Dictionary_Collection_DecimalPlaces.json" />
-    <None Include="Resources\Dictionaries\Dictionary_Collection_Default.json" />
-    <None Include="Resources\Dictionaries\Dictionary_Collection_Minimum.json" />
-    <None Include="Resources\Dictionaries\Dictionary_Collection_ReadOnly.json" />
-    <None Include="Resources\Dictionaries\Dictionary_Collection_Titles.json" />
+    <None Include="Resources\CollectionsData\CollectionsData.json" />
     <None Include="Resources\Files\AboutProgram.rtf" />
     <None Include="Resources\Files\AboutStrategy.rtf" />
     <None Include="Resources\Sounds\Sound_Done.gz" />

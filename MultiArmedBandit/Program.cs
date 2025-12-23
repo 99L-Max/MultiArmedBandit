@@ -15,7 +15,9 @@ namespace MultiArmedBandit
             Application.Run(new FormMain());
         }
 
-        private static void ShowErrorMessage(object sender, ThreadExceptionEventArgs e) =>
+        private static void ShowErrorMessage(object sender, ThreadExceptionEventArgs e)
+        {
             MessageBox.Show(e.Exception.ToString());
+        }
     }
 }

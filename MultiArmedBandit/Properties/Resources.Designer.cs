@@ -203,49 +203,9 @@ namespace MultiArmedBandit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] Dictionary_Collection_DecimalPlaces {
+        internal static byte[] CollectionsData {
             get {
-                object obj = ResourceManager.GetObject("Dictionary_Collection_DecimalPlaces", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] Dictionary_Collection_Default {
-            get {
-                object obj = ResourceManager.GetObject("Dictionary_Collection_Default", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] Dictionary_Collection_Minimum {
-            get {
-                object obj = ResourceManager.GetObject("Dictionary_Collection_Minimum", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] Dictionary_Collection_ReadOnly {
-            get {
-                object obj = ResourceManager.GetObject("Dictionary_Collection_ReadOnly", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] Dictionary_Collection_Titles {
-            get {
-                object obj = ResourceManager.GetObject("Dictionary_Collection_Titles", resourceCulture);
+                object obj = ResourceManager.GetObject("CollectionsData", resourceCulture);
                 return ((byte[])(obj));
             }
         }

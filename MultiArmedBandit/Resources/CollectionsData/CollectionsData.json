@@ -1,0 +1,65 @@
+{
+  "NumberRow": {
+    "Title": "№",
+    "DefaultValue": 0.0,
+    "Minimum": 0.0,
+    "DecimalPlaces": 0,
+    "ReadOnly": true
+  },
+  "ArmsCount": {
+    "Title": "Число рук J",
+    "DefaultValue": 2.0,
+    "Minimum": 2.0,
+    "DecimalPlaces": 0,
+    "ReadOnly": false
+  },
+  "BatchesCount": {
+    "Title": "Число пакетов K",
+    "DefaultValue": 50.0,
+    "Minimum": 1.0,
+    "DecimalPlaces": 0,
+    "ReadOnly": false
+  },
+  "StartBatchSize": {
+    "Title": "Размер пакета M",
+    "DefaultValue": 100.0,
+    "Minimum": 1.0,
+    "DecimalPlaces": 0,
+    "ReadOnly": false
+  },
+  "GrowthRateBatchSize": {
+    "Title": "Коэффициент роста α",
+    "DefaultValue": 1.5,
+    "Minimum": 1.0,
+    "DecimalPlaces": 2,
+    "ReadOnly": false
+  },
+  "TimeChangeBatch": {
+    "Title": "Время до изменения T",
+    "DefaultValue": 10.0,
+    "Minimum": 1.0,
+    "DecimalPlaces": 0,
+    "ReadOnly": false
+  },
+  "Horizon": {
+    "Title": "Горизонт управления N",
+    "DefaultValue": 5000.0,
+    "Minimum": 1.0,
+    "DecimalPlaces": 0,
+    "ReadOnly": true
+  },
+  "ParameterUCB": {
+    "Title": "Параметр a стратегии UCB",
+    "DefaultValue": 1.0,
+    "Minimum": 0.0,
+    "DecimalPlaces": 2,
+    "ReadOnly": false
+  },
+  "Deviation": {
+    "Title": "Отклонения d от мат. ожидания m",
+    "DefaultValue": 0.0,
+    "Minimum": -1.7976931348623157E+308,
+    "DecimalPlaces": 1,
+    "ReadOnly": false
+  }
+}
